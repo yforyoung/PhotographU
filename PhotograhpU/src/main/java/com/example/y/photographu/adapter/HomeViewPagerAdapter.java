@@ -1,4 +1,4 @@
-package com.example.y.potographu.adapter;
+package com.example.y.photographu.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.y.potographu.R;
+import com.example.y.photographu.R;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 

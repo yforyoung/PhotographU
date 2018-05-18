@@ -1,4 +1,4 @@
-package com.example.y.potographu.adapter;
+package com.example.y.photographu.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.y.potographu.R;
+import com.example.y.photographu.R;
 
 public class DiscoveryContentAdapter extends RecyclerView.Adapter<DiscoveryContentAdapter.ViewHolder> {
     @NonNull

@@ -1,4 +1,4 @@
-package com.example.y.potographu.fragment.discovery;
+package com.example.y.photographu.fragment.discovery;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.y.potographu.R;
-import com.example.y.potographu.adapter.DiscoveryContentAdapter;
+import com.example.y.photographu.R;
+import com.example.y.photographu.adapter.DiscoveryContentAdapter;
 
 public class FragmentDiscoveryFirst extends Fragment {
     @Nullable

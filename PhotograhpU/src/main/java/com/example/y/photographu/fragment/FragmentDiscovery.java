@@ -1,4 +1,4 @@
-package com.example.y.potographu.fragment;
+package com.example.y.photographu.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.y.potographu.R;
-import com.example.y.potographu.adapter.DiscoveryViewPagerAdapter;
+import com.example.y.photographu.R;
+import com.example.y.photographu.adapter.DiscoveryViewPagerAdapter;
 
 public class FragmentDiscovery extends Fragment{
     private TabLayout tabLayout;

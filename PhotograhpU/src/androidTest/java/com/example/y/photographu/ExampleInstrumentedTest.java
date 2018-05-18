@@ -1,4 +1,4 @@
-package com.example.y.potographu;
+package com.example.y.photographu;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

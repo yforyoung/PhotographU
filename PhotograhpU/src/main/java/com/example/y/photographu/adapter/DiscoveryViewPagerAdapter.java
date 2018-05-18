@@ -1,14 +1,14 @@
-package com.example.y.potographu.adapter;
+package com.example.y.photographu.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.y.potographu.fragment.FragmentAppointment;
-import com.example.y.potographu.fragment.FragmentMine;
-import com.example.y.potographu.fragment.discovery.FragmentDiscoveryFirst;
-import com.example.y.potographu.fragment.discovery.FragmentDiscoverySecond;
+import com.example.y.photographu.fragment.FragmentAppointment;
+import com.example.y.photographu.fragment.FragmentMine;
+import com.example.y.photographu.fragment.discovery.FragmentDiscoveryFirst;
+import com.example.y.photographu.fragment.discovery.FragmentDiscoverySecond;
 
 public class DiscoveryViewPagerAdapter extends FragmentPagerAdapter {
     private  Fragment fragment[]=new Fragment[]{new FragmentDiscoveryFirst(),

@@ -1,4 +1,4 @@
-package com.example.y.potographu;
+package com.example.y.photographu;
 
 import org.junit.Test;
 

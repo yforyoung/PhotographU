@@ -1,4 +1,4 @@
-package com.example.y.potographu.adapter;
+package com.example.y.photographu.adapter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.y.potographu.IntroduceActivity;
-import com.example.y.potographu.R;
+import com.example.y.photographu.IntroduceActivity;
+import com.example.y.photographu.R;
 
 public class HomeStyleAdapter extends RecyclerView.Adapter<HomeStyleAdapter.ViewHolder> {
 

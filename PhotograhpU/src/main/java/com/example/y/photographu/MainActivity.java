@@ -1,4 +1,4 @@
-package com.example.y.potographu;
+package com.example.y.photographu;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import com.example.y.potographu.fragment.FragmentAppointment;
-import com.example.y.potographu.fragment.FragmentDiscovery;
-import com.example.y.potographu.fragment.FragmentHome;
-import com.example.y.potographu.fragment.FragmentMine;
+import com.example.y.photographu.fragment.FragmentAppointment;
+import com.example.y.photographu.fragment.FragmentDiscovery;
+import com.example.y.photographu.fragment.FragmentHome;
+import com.example.y.photographu.fragment.FragmentMine;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private FragmentManager manager;

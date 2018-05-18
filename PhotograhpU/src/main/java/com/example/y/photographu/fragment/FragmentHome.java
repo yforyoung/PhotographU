@@ -1,4 +1,4 @@
-package com.example.y.potographu.fragment;
+package com.example.y.photographu.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 
-import com.example.y.potographu.R;
-import com.example.y.potographu.adapter.HomeStyleAdapter;
-import com.example.y.potographu.adapter.HomeViewPagerAdapter;
+import com.example.y.photographu.R;
+import com.example.y.photographu.adapter.HomeStyleAdapter;
+import com.example.y.photographu.adapter.HomeViewPagerAdapter;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 

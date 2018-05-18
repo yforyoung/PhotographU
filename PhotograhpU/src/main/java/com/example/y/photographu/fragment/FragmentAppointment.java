@@ -1,4 +1,4 @@
-package com.example.y.potographu.fragment;
+package com.example.y.photographu.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.y.potographu.R;
-import com.example.y.potographu.adapter.HomeStyleAdapter;
+import com.example.y.photographu.R;
+import com.example.y.photographu.adapter.HomeStyleAdapter;
 
 public class FragmentAppointment extends Fragment {
     @Nullable
