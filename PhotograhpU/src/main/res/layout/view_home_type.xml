@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="260dp">
+    <ImageView
+        android:id="@+id/home_type_img"
+        android:background="#57b0c4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/home_type_text"
+        android:layout_alignParentBottom="true"
+        android:background="#e4ffffff"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:textColor="#000"
+        android:text="本周最佳风格：小清新"
+        android:layout_width="match_parent"
+        android:layout_height="55dp" />
+
+</RelativeLayout>
