@@ -10,6 +10,10 @@
         android:id="@+id/navigation_discovery"
         android:icon="@drawable/ic_discovery"
         android:title="@string/title_discovery" />
+    <item
+        android:title=""
+        android:id="@+id/add_news"
+        />
 
     <item
         android:id="@+id/navigation_appointment"

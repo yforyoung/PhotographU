@@ -1,105 +1,172 @@
 package com.example.y.photographu;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
 import com.example.y.photographu.fragment.FragmentAppointment;
 import com.example.y.photographu.fragment.FragmentDiscovery;
 import com.example.y.photographu.fragment.FragmentHome;
 import com.example.y.photographu.fragment.FragmentMine;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+import java.lang.reflect.Field;
+
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private FragmentManager manager;
     private FragmentHome fragmentHome;
     private FragmentDiscovery fragmentDiscovery;
     private FragmentAppointment fragmentAppointment;
     private FragmentMine fragmentMine;
+    private View contentView;
+    private final static String TAG = "MainActivity";
 
     @SuppressLint("CommitTransaction")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar=findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("U拍");
         setSupportActionBar(toolbar);
-
-
         BottomNavigationView navigation = findViewById(R.id.navigation);    //bottomNavigation用于选择Fragment
         navigation.setOnNavigationItemSelectedListener(this);
+        contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.popup_new, null);
 
-        /*动态加载需要用到FragmentManager和FragmentTransaction来控制Fragment的显示
-        * 一个事务只能提交一次，因此我把它的赋值放在showFragment()这个方法中
-        */
+        TextView userNews = contentView.findViewById(R.id.popup_user);
+        TextView photographNews = contentView.findViewById(R.id.popup_photograph);
+
+        photographNews.setOnClickListener(this);
+        userNews.setOnClickListener(this);
+       /* navigation.setItemIconTintList(new ColorStateList(
+                new int[][]{new int[]{-android.R.attr.state_checked},
+                        new int[]{android.R.attr.state_checked}},
+                new int[]{Color.parseColor("#FFE2E2E2"), Color.BLACK})
+        );*/
+        disableShiftMode(navigation);
         manager = getSupportFragmentManager();      //初始化管理者
         fragmentHome = new FragmentHome();      //第一页Fragment
         showFragment(fragmentHome);     //显示方法
 
     }
 
+    @SuppressLint("RestrictedApi")
+    public static void disableShiftMode(BottomNavigationView view) {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+        try {
+            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+            shiftingMode.setAccessible(true);
+            shiftingMode.setBoolean(menuView, false);
+            shiftingMode.setAccessible(false);
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                item.setShiftingMode(false);
+                item.setChecked(item.getItemData().isChecked());
+            }
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showFragment(Fragment fragment) {
         FragmentTransaction transaction = manager.beginTransaction();
-        /*
-        * 使用替换方法，将需要显示的Fragment显示出来
-        * 第一个参数是显示fragment的布局
-        * 第二个参数是要显示fragment
-        * */
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();//提交事务
 
     }
 
-
-   /* private void hideFragment(FragmentTransaction transaction) {
-        *//*判断当前显示的fragment 将它隐藏
-        * 有这一步是为了不引起冲突
-        * 但我使用replace方法显示 没有冲突的情况
-        * *//*
-        if (!fragmentHome.isHidden())
-            transaction.hide(fragmentHome);
-        else if (!fragmentDiscovery.isHidden())
-            transaction.hide(fragmentDiscovery);
-        else if (!fragmentAppointment.isHidden())
-            transaction.hide(fragmentAppointment);
-        else if (!fragmentMine.isHidden())
-            transaction.hide(fragmentMine);
-    }*/
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-       // hideFragment(transaction);
-        /*
-        * 使用showFragment()方法显示
-        * */
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 showFragment(fragmentHome);
-                return true;
+                break;
             case R.id.navigation_discovery:
                 if (fragmentDiscovery == null)
                     fragmentDiscovery = new FragmentDiscovery();
                 showFragment(fragmentDiscovery);
-                return true;
+                break;
             case R.id.navigation_appointment:
                 if (fragmentAppointment == null)
                     fragmentAppointment = new FragmentAppointment();
                 showFragment(fragmentAppointment);
-                return true;
+                break;
             case R.id.navigation_mine:
                 if (fragmentMine == null)
                     fragmentMine = new FragmentMine();
                 showFragment(fragmentMine);
-                return true;
+                break;
+            case R.id.add_news:
+                setBackgroundAlpha(0.5f);
+                showPopUpWindow();
+                break;
             default:
         }
-        return false;
+        return true;
+    }
+
+    private void showPopUpWindow() {
+
+        View rootView = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main, null);
+        PopupWindow window = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        window.setBackgroundDrawable(new ColorDrawable(0));
+        window.setTouchable(true);
+        window.setTouchInterceptor(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return false;
+            }
+        });
+        window.setClippingEnabled(true);
+        window.setAnimationStyle(R.style.PopupWindowAnimation);
+        window.setOutsideTouchable(true);
+        window.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setBackgroundAlpha(1);
+            }
+        });
+        window.showAtLocation(rootView, Gravity.BOTTOM, 0, 0);
+    }
+
+    private void setBackgroundAlpha(float alpha) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = alpha;
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        getWindow().setAttributes(lp);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.popup_user:
+                break;
+            case R.id.popup_photograph:
+                break;
+            default:
+        }
     }
 }

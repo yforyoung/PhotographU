@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.y.photographu.R;
 
-public class FragmentDiscoverySecond  extends Fragment{
+public class FragmentDiscoveryRecommend extends Fragment{
 
     @Nullable
     @Override

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.y.photographu.R;
 import com.example.y.photographu.adapter.DiscoveryContentAdapter;
 
-public class FragmentDiscoveryFirst extends Fragment {
+public class FragmentDiscoveryMyAttention extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

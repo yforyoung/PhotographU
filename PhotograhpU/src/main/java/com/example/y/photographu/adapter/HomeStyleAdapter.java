@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.y.photographu.IntroduceActivity;
 import com.example.y.photographu.R;
@@ -20,8 +21,7 @@ public class HomeStyleAdapter extends RecyclerView.Adapter<HomeStyleAdapter.View
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(parent.getContext(), IntroduceActivity.class);
-                parent.getContext().startActivity(intent);
+
             }
         });
         return new ViewHolder(view);
@@ -38,13 +38,14 @@ public class HomeStyleAdapter extends RecyclerView.Adapter<HomeStyleAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img,favorite,turnedIn,share;
-        ViewHolder(View itemView) {
+        ImageView img;
+        TextView title,body;
+        ViewHolder(final View itemView) {
             super(itemView);
             img=itemView.findViewById(R.id.item_home_style_img);
-            favorite=itemView.findViewById(R.id.item_home_style_favorite);
-            turnedIn=itemView.findViewById(R.id.item_home_style_turned_in);
-            share=itemView.findViewById(R.id.item_home_style_share);
+            title=itemView.findViewById(R.id.item_home_style_title);
+            body=itemView.findViewById(R.id.item_home_style_body);
+
         }
     }
 }

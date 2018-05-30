@@ -5,18 +5,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.y.photographu.fragment.FragmentAppointment;
-import com.example.y.photographu.fragment.FragmentMine;
-import com.example.y.photographu.fragment.discovery.FragmentDiscoveryFirst;
-import com.example.y.photographu.fragment.discovery.FragmentDiscoverySecond;
+import com.example.y.photographu.fragment.discovery.FragmentDiscoveryMyAttention;
+import com.example.y.photographu.fragment.discovery.FragmentDiscoveryRecommend;
 
 public class DiscoveryViewPagerAdapter extends FragmentPagerAdapter {
-    private  Fragment fragment[]=new Fragment[]{new FragmentDiscoveryFirst(),
-            new FragmentDiscoverySecond(),
-            new FragmentAppointment(),
-            new FragmentMine()};
+    private  Fragment fragment[]=new Fragment[]{new FragmentDiscoveryMyAttention(),
+            new FragmentDiscoveryRecommend()
+            };
 
-    private String titles[]=new String[]{"精选","汗水操场","教学楼物语","更多"};
+    private String titles[]=new String[]{"我的关注","精选"};
     public DiscoveryViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -28,7 +25,7 @@ public class DiscoveryViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 2;
     }
 
     @Nullable

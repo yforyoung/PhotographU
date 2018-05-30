@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.adapter.HomeStyleAdapter;
+import com.example.y.photographu.adapter.AppointmentPhotographAdapter;
 
 public class FragmentAppointment extends Fragment {
     @Nullable
@@ -25,7 +25,7 @@ public class FragmentAppointment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         RecyclerView recyclerView=getActivity().findViewById(R.id.appointment_list);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        HomeStyleAdapter adapter=new HomeStyleAdapter();
+        AppointmentPhotographAdapter adapter=new AppointmentPhotographAdapter();
         recyclerView.setAdapter(adapter);
 
     }

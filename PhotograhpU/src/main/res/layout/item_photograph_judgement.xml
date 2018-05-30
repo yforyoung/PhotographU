@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    >
+
+    <TextView
+        android:id="@+id/item_photograph_judgement_client"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="客户:t***y"
+        android:textColor="#000" />
+
+    <com.hedgehog.ratingbar.RatingBar
+        android:layout_alignTop="@id/item_photograph_judgement_client"
+        android:id="@+id/item_photograph_rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        app:clickable="false"
+        android:layout_alignParentRight="true"
+        app:starEmpty="@drawable/ic_rating"
+        app:starFill="@drawable/ic_rating_show" />
+    <TextView
+        android:id="@+id/item_photograph_judgement_content"
+        android:layout_below="@id/item_photograph_judgement_client"
+        android:text="评价啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+</RelativeLayout>
