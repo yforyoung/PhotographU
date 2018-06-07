@@ -98,6 +98,7 @@
                         app:cardBackgroundColor="#228f72">
 
                         <TextView
+                            android:id="@+id/introduce_price"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -116,6 +117,7 @@
                         android:layout_weight="3">
 
                         <TextView
+                            android:id="@+id/introduce_service_content"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -186,6 +188,7 @@
                 app:starFill="@drawable/ic_rating_show" />
 
             <TextView
+                android:id="@+id/introduce_judge_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -193,7 +196,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
-                android:text="(323)" />
+                android:text="(0)" />
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView

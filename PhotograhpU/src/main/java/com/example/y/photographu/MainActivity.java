@@ -46,8 +46,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
+
+        manager = getSupportFragmentManager();      //初始化管理者
+        fragmentHome = new FragmentHome();      //第一页Fragment
+        showFragment(fragmentHome);     //显示方法
+
+    }
+
+    private void initView() {
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("U拍");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         BottomNavigationView navigation = findViewById(R.id.navigation);    //bottomNavigation用于选择Fragment
         navigation.setOnNavigationItemSelectedListener(this);
@@ -58,16 +67,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         photographNews.setOnClickListener(this);
         userNews.setOnClickListener(this);
-       /* navigation.setItemIconTintList(new ColorStateList(
-                new int[][]{new int[]{-android.R.attr.state_checked},
-                        new int[]{android.R.attr.state_checked}},
-                new int[]{Color.parseColor("#FFE2E2E2"), Color.BLACK})
-        );*/
         disableShiftMode(navigation);
-        manager = getSupportFragmentManager();      //初始化管理者
-        fragmentHome = new FragmentHome();      //第一页Fragment
-        showFragment(fragmentHome);     //显示方法
-
     }
 
     @SuppressLint("RestrictedApi")

@@ -33,7 +33,6 @@ public class FragmentDiscovery extends Fragment{
         DiscoveryViewPagerAdapter adapter = new DiscoveryViewPagerAdapter(manager);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
-
         tabLayout.setupWithViewPager(viewPager);
     }
 
