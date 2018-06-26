@@ -55,13 +55,13 @@ public class IntroduceActivity extends AppCompatActivity implements View.OnClick
         order.setOnClickListener(this);
 
         Photographer photographer= (Photographer) getIntent().getSerializableExtra("p");
-        title.setText(photographer.getUser().getNickName());
+        title.setText(photographer.getUser().getNickname());
         price.setText("￥"+photographer.getPrice());
-        name.setText(photographer.getUser().getNickName());
+        name.setText(photographer.getUser().getNickname());
         introduce.setText(photographer.getIntroduce());
         service.setText(photographer.getService());
         commentCount.setText("("+photographer.getPhotographerCommentList().size()+")");
-        head.setImageResource(photographer.getUser().getHeadImage());
+       // head.setImageResource(photographer.getUser().getHeadImage());
         rollPagerView.setAdapter(new PhotographerRollViewPagerAdapter(photographer.getPhotoList()));
 
 

@@ -40,12 +40,6 @@ public class TypeShowActivity extends AppCompatActivity {
 
         List<Topic> topicList=new ArrayList<>();
 
-        for (Topic t:new Util().getListTopic()){
-            if (t.getType().getTypeName().equals(type.getTypeName())) {
-                topicList.add(t);
-            }
-        }
-
 
         RecyclerView recyclerView = findViewById(R.id.type_show_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

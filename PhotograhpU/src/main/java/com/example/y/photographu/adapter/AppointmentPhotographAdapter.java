@@ -41,8 +41,8 @@ public class AppointmentPhotographAdapter extends RecyclerView.Adapter<Appointme
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Photographer photographer = photographerList.get(position);
-        holder.img.setImageResource(photographer.getUser().getHeadImage());
-        holder.id.setText(photographer.getUser().getNickName());
+       // holder.img.setImageResource(photographer.getUser().getHeadImage());
+        holder.id.setText(photographer.getUser().getNickname());
         holder.img.setTag(position);
     }
 

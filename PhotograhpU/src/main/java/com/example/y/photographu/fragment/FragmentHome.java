@@ -42,13 +42,7 @@ public class FragmentHome extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         typeList = new ArrayList<>();
-        typeList.add(Test.getInstence().type1);
-        typeList.add(Test.getInstence().type2);
-        typeList.add(Test.getInstence().type3);
-        typeList.add(Test.getInstence().type4);
-        typeList.add(Test.getInstence().type5);
-        typeList.add(Test.getInstence().type6);
-        typeList.add(Test.getInstence().type7);
+
 
         recyclerView = getActivity().findViewById(R.id.home_style_list);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));

@@ -44,8 +44,8 @@ public class DiscoveryContentAdapter extends RecyclerView.Adapter<DiscoveryConte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Topic topic = topicList.get(position);
-        holder.head.setBackgroundResource(topic.getUser().getHeadImage());
-        holder.name.setText(topic.getUser().getNickName());
+       // holder.head.setBackgroundResource(topic.getUser().getHeadImage());
+        holder.name.setText(topic.getUser().getNickname());
         holder.img.setBackgroundResource(topic.getContentImage());
         holder.thumbUpCount.setText(topic.getThumbUp() + "");
         holder.commentCount.setText(topic.getCommentList().size() + "");

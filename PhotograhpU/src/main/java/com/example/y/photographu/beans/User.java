@@ -1,50 +1,39 @@
 package com.example.y.photographu.beans;
 
-import java.io.Serializable;
+import java.util.Date;
 
-public class User implements Serializable{
-    private String id;
-    private String nickName;
+public class User {
+    private int id;
+    private String nickname;
+    private String headImage;
     private String sex;
-    private String birthday;
-    private int headImage;
-    private School school;
-    private String telphone;
+    private Date birthday;
+    private String phone;
     private String password;
+    private String school;
 
-    public User(String nickName, int headImage) {
-        this.nickName = nickName;
-        this.headImage = headImage;
-    }
-
-    public User(String id, String nickName, String sex, String birthday, int headImage, School school, String telphone, String password) {
-        this.id = id;
-        this.nickName = nickName;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.headImage = headImage;
-        this.school = school;
-        this.telphone = telphone;
-        this.password = password;
-    }
-
-    public User() {
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getHeadImage() {
+        return headImage;
+    }
+
+    public void setHeadImage(String headImage) {
+        this.headImage = headImage;
     }
 
     public String getSex() {
@@ -55,36 +44,20 @@ public class User implements Serializable{
         this.sex = sex;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
-    public int getHeadImage() {
-        return headImage;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setHeadImage(int headImage) {
-        this.headImage = headImage;
-    }
-
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
-    }
-
-    public String getTelphone() {
-        return telphone;
-    }
-
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {
@@ -93,5 +66,13 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
     }
 }

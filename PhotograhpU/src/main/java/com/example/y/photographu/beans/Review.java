@@ -1,11 +1,10 @@
 package com.example.y.photographu.beans;
 
-public class Comment {
+public class Review {
     private int id;
     private User user;
-    private Note note;
+    private Photographer photographer;
     private String content;
-    private Comment father;
 
     public int getId() {
         return id;
@@ -23,12 +22,12 @@ public class Comment {
         this.user = user;
     }
 
-    public Note getNote() {
-        return note;
+    public Photographer getPhotographer() {
+        return photographer;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public void setPhotographer(Photographer photographer) {
+        this.photographer = photographer;
     }
 
     public String getContent() {
@@ -37,13 +36,5 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Comment getFather() {
-        return father;
-    }
-
-    public void setFather(Comment father) {
-        this.father = father;
     }
 }

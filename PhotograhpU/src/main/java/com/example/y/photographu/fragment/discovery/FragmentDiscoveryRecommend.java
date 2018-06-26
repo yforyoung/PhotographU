@@ -11,13 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.Test;
-import com.example.y.photographu.Util;
 import com.example.y.photographu.adapter.DiscoveryContentAdapter;
-import com.example.y.photographu.beans.Comment;
 import com.example.y.photographu.beans.Topic;
-import com.example.y.photographu.beans.Type;
-import com.example.y.photographu.beans.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +30,10 @@ public class FragmentDiscoveryRecommend extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        List<Topic> topicList=new ArrayList<>();
         RecyclerView recyclerView = getActivity().findViewById(R.id.discovery_2_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        DiscoveryContentAdapter adapter = new DiscoveryContentAdapter(new Util().getListTopic());
+        DiscoveryContentAdapter adapter = new DiscoveryContentAdapter(topicList);
         recyclerView.setAdapter(adapter);
     }
 }

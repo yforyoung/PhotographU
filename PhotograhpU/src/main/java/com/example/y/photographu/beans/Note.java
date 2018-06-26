@@ -1,11 +1,11 @@
 package com.example.y.photographu.beans;
-
-public class Comment {
+import java.util.Date;
+public class Note {
     private int id;
     private User user;
-    private Note note;
+    private Style style;
     private String content;
-    private Comment father;
+    private Date releaseTime;
 
     public int getId() {
         return id;
@@ -23,12 +23,12 @@ public class Comment {
         this.user = user;
     }
 
-    public Note getNote() {
-        return note;
+    public Style getStyle() {
+        return style;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public void setStyle(Style style) {
+        this.style = style;
     }
 
     public String getContent() {
@@ -39,11 +39,11 @@ public class Comment {
         this.content = content;
     }
 
-    public Comment getFather() {
-        return father;
+    public Date getReleaseTime() {
+        return releaseTime;
     }
 
-    public void setFather(Comment father) {
-        this.father = father;
+    public void setReleaseTime(Date releaseTime) {
+        this.releaseTime = releaseTime;
     }
 }

@@ -23,7 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.y.photographu.fragment.FragmentAppointment;
 import com.example.y.photographu.fragment.FragmentDiscovery;
@@ -61,6 +63,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomNavigationView navigation = findViewById(R.id.navigation);    //bottomNavigation用于选择Fragment
         navigation.setOnNavigationItemSelectedListener(this);
         contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.popup_new, null);
+
+
+        RelativeLayout search=toolbar.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "本功能暂未开放", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         TextView userNews = contentView.findViewById(R.id.popup_user);
         TextView photographNews = contentView.findViewById(R.id.popup_photograph);
@@ -163,8 +174,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.popup_user:
+                Toast.makeText(MainActivity.this, "本功能暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.popup_photograph:
+                Toast.makeText(MainActivity.this, "本功能暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             default:
         }
