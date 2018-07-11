@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/colorBackground"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
@@ -16,9 +15,10 @@
             android:id="@+id/mine_head"
             android:background="@drawable/head_1"
             android:layout_width="86dp"
-            android:layout_height="86dp" />
+            android:layout_height="86dp"
+            tools:ignore="ContentDescription" />
         <TextView
-            android:id="@+id/mine_nick_name"
+            android:id="@+id/mine_nickname"
             android:text="知别林"
             android:textColor="#000"
             android:textSize="26sp"
@@ -26,15 +26,18 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/mine_head" />
         <TextView
             android:id="@+id/mine_intro"
             android:text="靡不有初，鲜克有终"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/mine_nick_name"
-            android:layout_alignLeft="@id/mine_nick_name"
+            android:layout_below="@id/mine_nickname"
+            android:layout_alignLeft="@id/mine_nickname"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/mine_nickname" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -52,7 +55,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -70,7 +75,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -88,7 +95,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -106,7 +115,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -124,7 +135,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -142,7 +155,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
     <RelativeLayout
         android:background="#fff"
@@ -160,7 +175,9 @@
             android:background="@drawable/ic_home_more"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
 
 </LinearLayout>

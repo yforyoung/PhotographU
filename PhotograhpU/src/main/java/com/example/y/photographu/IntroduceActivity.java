@@ -17,7 +17,7 @@ import com.example.y.photographu.adapter.PhotographerRollViewPagerAdapter;
 import com.example.y.photographu.beans.Photographer;
 import com.jude.rollviewpager.RollPagerView;
 
-public class IntroduceActivity extends AppCompatActivity implements View.OnClickListener {
+public class IntroduceActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

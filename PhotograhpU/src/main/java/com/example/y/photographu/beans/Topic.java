@@ -8,7 +8,7 @@ public class Topic {
     private int contentImage;
     private int thumbUp;
     private List<Comment> commentList;
-    private Type type;
+    private Style Style;
 
     public User getUser() {
         return user;
@@ -50,21 +50,21 @@ public class Topic {
         this.commentList = commentList;
     }
 
-    public Type getType() {
-        return type;
+    public Style getStyle() {
+        return Style;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setStyle(Style Style) {
+        this.Style = Style;
     }
 
-    public Topic(User user, String content, int contentImage, int thumbUp, List<Comment> commentList, Type type) {
+    public Topic(User user, String content, int contentImage, int thumbUp, List<Comment> commentList, Style Style) {
         this.user = user;
         this.content = content;
         this.contentImage = contentImage;
         this.thumbUp = thumbUp;
         this.commentList = commentList;
-        this.type = type;
+        this.Style = Style;
     }
 
     public Topic() {

@@ -43,9 +43,8 @@ public class LoadActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_load);
         SharedPreferences sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
         if (sharedPreferences.getInt("user", 0) == 1) {
-            Intent intent = new Intent(LoadActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            startMainActivity();
+
         }
 
         TextView findPassword = findViewById(R.id.load_find_password);
@@ -58,16 +57,22 @@ public class LoadActivity extends BaseActivity implements View.OnClickListener {
         load.setOnClickListener(this);
         findPassword.setOnClickListener(this);
         register.setOnClickListener(this);
-
-
     }
+
+    private void startMainActivity() {
+        Intent intent = new Intent(LoadActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.load_find_password:
-                Intent intent1 = new Intent(LoadActivity.this, FindPasswordActivity.class);
-                startActivity(intent1);
+                Toast.makeText(this, "暂未开放", Toast.LENGTH_SHORT).show();
+                /*Intent intent1 = new Intent(LoadActivity.this, FindPasswordActivity.class);
+                startActivity(intent1);*/
                 break;
             case R.id.load_register:
                 Intent intent2 = new Intent(LoadActivity.this, RegisterActivity.class);
@@ -87,7 +92,6 @@ public class LoadActivity extends BaseActivity implements View.OnClickListener {
         if (user.equals("") || password.equals("")) {
             Toast.makeText(LoadActivity.this, "请输入正确的用户名或密码！", Toast.LENGTH_SHORT).show();
         } else {
-            final OkHttpClient client = new OkHttpClient();
             RequestBody requestBody = new FormBody.Builder()
                     .add("phone", user)
                     .add("password", password)
@@ -97,29 +101,32 @@ public class LoadActivity extends BaseActivity implements View.OnClickListener {
                     .post(requestBody)
                     .build();
             final Util util = new Util();
-            util.doPost(LoadActivity.this, request);
-            util.setHandleResponse(new Util.HandleResponse() {
+            doPost( request);
+            setHandleResponse(new HandleResponse() {
                 @Override
                 public void handleResponses(Response response) throws IOException {
 
+                    assert response.body() != null;
                     String s = response.body().string();
+                    Log.i(TAG, "handleResponses: "+s);
                     Gson gson = new Gson();
                     ResponseData responseData = gson.fromJson(s, ResponseData.class);
                     if (responseData.getCode() == 0) {
                         String m = gson.toJson(responseData.getData());
                         User user = gson.fromJson(m, User.class);
-                        Headers headers = response.headers();
-                        String cookie = headers.get("Set-Cookie");
-                        cookie = cookie.substring(cookie.indexOf("=")+1, cookie.indexOf(";"));
+                        String cookie=response.header("Set-Cookie");
+                        Log.i(TAG, "handleResponses: "+m);
+                        assert cookie != null;
+                        cookie=cookie.substring(0,cookie.indexOf(";"));
                         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = getSharedPreferences("user_info", MODE_PRIVATE).edit();
                         editor.putString("cookie", cookie);
                         editor.putInt("user", 1);
-                        Test.getInstence().user = user;
-                        util.save(m, LoadActivity.this);
+                        editor.apply();
+                        Test.getInstance().user = user;
+                        Test.getInstance().cookie=cookie;
+                        util.save(m, LoadActivity.this);    //存用户数据，登录状态，cookie
                         Log.i(TAG, "handleResponses: " + cookie);
-                        Intent intent = new Intent(LoadActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        startMainActivity();
                     } else if (responseData.getCode() == 1) {
                         showToast("用户名或密码错误！");
                     }

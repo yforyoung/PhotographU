@@ -1,19 +1,15 @@
 package com.example.y.photographu;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.example.y.photographu.beans.ResponseData;
 import com.google.gson.Gson;
-
 import java.io.IOException;
-
 import okhttp3.FormBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -53,6 +49,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("账号注册");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         userEdit = findViewById(R.id.register_user);
         passwordEdit = findViewById(R.id.register_password);
@@ -100,6 +102,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             setHandleResponse(new HandleResponse() {
                 @Override
                 public void handleResponses(Response response) throws IOException {
+                    assert response.body() != null;
                     String s=response.body().string();
                     ResponseData responseData=new Gson().fromJson(s,ResponseData.class);
                     if (responseData.getCode()==1){
@@ -138,6 +141,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     cookie=response.header("Set-Cookie");
                     Log.i(TAG, "handleResponses: "+cookie);
                     cookie=cookie.substring(0,cookie.indexOf(";"));
+                    assert response.body() != null;
                     String s=response.body().string();
                     ResponseData responseData=new Gson().fromJson(s,ResponseData.class);
                     if (responseData.getCode()==0){

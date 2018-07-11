@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.Test;
 import com.example.y.photographu.adapter.DiscoveryContentAdapter;
-import com.example.y.photographu.beans.Comment;
 import com.example.y.photographu.beans.Topic;
-import com.example.y.photographu.beans.Type;
 
 import java.util.ArrayList;
 import java.util.List;

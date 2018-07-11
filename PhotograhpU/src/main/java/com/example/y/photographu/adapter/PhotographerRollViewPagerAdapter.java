@@ -1,13 +1,9 @@
 package com.example.y.photographu.adapter;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.y.photographu.R;
-import com.example.y.photographu.beans.Type;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 

@@ -1,6 +1,5 @@
 package com.example.y.photographu;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,14 +9,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.y.photographu.adapter.DiscoveryContentAdapter;
-import com.example.y.photographu.beans.Comment;
+import com.example.y.photographu.beans.Style;
 import com.example.y.photographu.beans.Topic;
-import com.example.y.photographu.beans.Type;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypeShowActivity extends AppCompatActivity {
+public class TypeShowActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +33,8 @@ public class TypeShowActivity extends AppCompatActivity {
             }
         });
 
-        Type type= (Type) getIntent().getSerializableExtra("type");
-        title.setText(type.getTypeName());
+        Style type= (Style) getIntent().getSerializableExtra("type");
+        title.setText(type.getName());
 
         List<Topic> topicList=new ArrayList<>();
 

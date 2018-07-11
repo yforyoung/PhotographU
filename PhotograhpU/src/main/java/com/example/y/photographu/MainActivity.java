@@ -27,14 +27,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.y.photographu.beans.User;
 import com.example.y.photographu.fragment.FragmentAppointment;
 import com.example.y.photographu.fragment.FragmentDiscovery;
 import com.example.y.photographu.fragment.FragmentHome;
 import com.example.y.photographu.fragment.FragmentMine;
+import com.google.gson.Gson;
 
 import java.lang.reflect.Field;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private FragmentManager manager;
     private FragmentHome fragmentHome;
     private FragmentDiscovery fragmentDiscovery;
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        if (Test.getInstance().user==null){
+            String u=new Util().read(this);
+            Test.getInstance().user= new Gson().fromJson(u, User.class);
+        }
 
         manager = getSupportFragmentManager();      //初始化管理者
         fragmentHome = new FragmentHome();      //第一页Fragment

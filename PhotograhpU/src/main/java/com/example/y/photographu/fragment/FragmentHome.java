@@ -8,27 +8,40 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.y.photographu.BaseActivity;
+import com.example.y.photographu.MainActivity;
 import com.example.y.photographu.R;
-import com.example.y.photographu.Test;
 import com.example.y.photographu.TypeShowActivity;
-import com.example.y.photographu.adapter.HomeStyleAdapter;
+import com.example.y.photographu.Util;
+import com.example.y.photographu.adapter.StyleAdapter;
 import com.example.y.photographu.adapter.HomeRollViewPagerAdapter;
-import com.example.y.photographu.beans.Type;
+import com.example.y.photographu.beans.ResponseData;
+import com.example.y.photographu.beans.Style;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class FragmentHome extends Fragment {
     private RecyclerView recyclerView;
     private RollPagerView rollPagerView;
     private View view;
-    private List<Type> typeList;
+    private List<Style> typeList;
+    private StyleAdapter adapter;
 
     @Nullable
     @Override
@@ -42,12 +55,11 @@ public class FragmentHome extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         typeList = new ArrayList<>();
-
+        adapter=new StyleAdapter(typeList,getActivity());
 
         recyclerView = getActivity().findViewById(R.id.home_style_list);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        HomeStyleAdapter adapter=new HomeStyleAdapter(typeList);
-        adapter.setOnItemClickListener(new HomeStyleAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new StyleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int tag) {
                 Intent intent=new Intent(getActivity(), TypeShowActivity.class);
@@ -57,6 +69,7 @@ public class FragmentHome extends Fragment {
             }
         });
         recyclerView.setAdapter(adapter);
+        initData();
 
         rollPagerView = getActivity().findViewById(R.id.type_roll_viewpager);
         rollPagerView.setHintView(new ColorPointHintView(getActivity(),
@@ -64,6 +77,28 @@ public class FragmentHome extends Fragment {
         rollPagerView.setAdapter(new HomeRollViewPagerAdapter());
 
 
+
+
+    }
+
+    private void initData() {
+        Request request=new Request.Builder()
+                .url("http://www.xhban.com:8080/photograph_u/user/listAllStyles")
+                .build();
+        Util util=new Util();
+        util.doPost((MainActivity)getActivity(),request);
+        util.setHandleResponse(new Util.HandleResponse() {
+            @Override
+            public void handleResponses(Response response) throws IOException {
+                String s=response.body().string();
+                Log.i(TAG, "handleResponses: "+s);
+                ResponseData responseData=new Gson().fromJson(s,new TypeToken<ResponseData<List<Style>>>(){}.getType());
+                typeList.addAll((List<Style>) responseData.getData());
+                Log.i(TAG, "handleResponses: ");
+                adapter.notifyDataSetChanged();
+                //((BaseActivity)getActivity()).refreshAdapter(adapter);
+            }
+        });
     }
 
 
