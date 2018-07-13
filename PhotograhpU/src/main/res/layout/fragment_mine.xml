@@ -1,183 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/colorBackground"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/mine_head"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/mine_head"
-            android:background="@drawable/head_1"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/mine_nickname"
-            android:text="知别林"
-            android:textColor="#000"
-            android:textSize="26sp"
-            android:layout_toRightOf="@id/mine_head"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/mine_head" />
-        <TextView
-            android:id="@+id/mine_intro"
-            android:text="靡不有初，鲜克有终"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/mine_nickname"
-            android:layout_alignLeft="@id/mine_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/mine_nickname" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="我的发帖"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="我的关注"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="历史约拍"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="我的收藏"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="申请成为摄影师"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="关于我们"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="#fff"
-        android:padding="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        <TextView
-            android:text="设置"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_home_more"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
+        android:src="@drawable/head_1"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="2dp"
+        tools:ignore="ContentDescription" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/mine_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/mine_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/mine_head"
+        android:layout_toRightOf="@id/mine_head"
+        android:text="知别林"
+        android:textColor="#000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mine_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/mine_nickname"
+        android:layout_alignStart="@id/mine_nickname"
+        android:layout_below="@id/mine_nickname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="靡不有初，鲜克有终" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/mine_head"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/my_note"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/line"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="我的发帖" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/line"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/my_note"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/my_concern"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/my_note"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="我的关注" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/my_note"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/my_concern"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/my_history"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/my_concern"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="历史约拍" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/my_concern"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/my_history"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/my_collection"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/my_history"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="我的收藏" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/my_history"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/my_collection"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/my_apply"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/my_collection"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="申请成为摄影师" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/my_collection"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/my_apply"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/about_us"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/my_apply"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="关于我们" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/my_apply"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/about_us"
+        android:background="@color/colorBackground" />
+
+    <TextView
+        android:id="@+id/my_set"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/about_us"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="设置" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/about_us"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_home_more"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/my_set"
+        android:background="@color/colorBackground" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:backgroundTint="#f00"
+        android:text="注    销"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBackground" />
+
+</RelativeLayout>

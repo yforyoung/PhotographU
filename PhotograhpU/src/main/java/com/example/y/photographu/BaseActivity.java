@@ -7,11 +7,8 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Adapter;
 import android.widget.Toast;
-
 import java.io.IOException;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -19,6 +16,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class BaseActivity extends AppCompatActivity {
+    private Toast toast;
 
     private static final int SHOW_TOAST = 1;
     private static final int REFRESH_ADAPTER = 2;
@@ -31,7 +29,12 @@ public class BaseActivity extends AppCompatActivity {
             switch (msg.what) {
                 case SHOW_TOAST:
                     String s = msg.getData().getString("toast");
-                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                    if (toast == null) {
+                        toast = Toast.makeText(BaseActivity.this, s, Toast.LENGTH_SHORT);
+                    } else {
+                        toast.setText(s);
+                    }
+                    toast.show();
                     break;
                 case REFRESH_ADAPTER:
                     adapter.notifyDataSetChanged();
@@ -69,7 +72,7 @@ public class BaseActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
                         handleResponse(response);
                     }
                 });
@@ -97,4 +100,5 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
     }
+
 }

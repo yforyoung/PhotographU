@@ -110,13 +110,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     }
                     else if (responseData.getCode()==0){
                         showToast("注册成功！请登陆");
-                        Intent intent=new Intent(RegisterActivity.this,LoadActivity.class);
-                        startActivity(intent);
                         finish();
                     }
                 }
             });
-
         }
 
     }
@@ -134,8 +131,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     .post(requestBody)
                     .build();
 
-            util.doPost(RegisterActivity.this,request);
-            util.setHandleResponse(new Util.HandleResponse() {
+            doPost(request);
+           setHandleResponse(new HandleResponse() {
                 @Override
                 public void handleResponses(Response response) throws IOException {
                     cookie=response.header("Set-Cookie");

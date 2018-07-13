@@ -73,11 +73,11 @@ public class AppointmentPhotographAdapter extends RecyclerView.Adapter<Appointme
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.item_photograph_img:
-                    Intent intent=new Intent(v.getContext(), IntroduceActivity.class);
+                    /*Intent intent=new Intent(v.getContext(), IntroduceActivity.class);
                     intent.putExtra("p",photographerList.get((Integer) v.getTag()));
-                    v.getContext().startActivity(intent);
-                    /*if (onItemClickListener != null)
-                        onItemClickListener.onItemClick(v, (Integer) v.getTag());*/
+                    v.getContext().startActivity(intent);*/
+                    if (onItemClickListener != null)
+                        onItemClickListener.onItemClick(v, (Integer) v.getTag());
                     break;
                 case R.id.item_photograph_favorite:
                     if (f == 0) {

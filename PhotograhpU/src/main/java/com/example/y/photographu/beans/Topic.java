@@ -1,20 +1,57 @@
 package com.example.y.photographu.beans;
 
+import java.util.Date;
 import java.util.List;
 
 public class Topic {
-    private User user;
+    private int id;
+    private int userId;
+    private int styleId;
+    private String releaseTime;
+    private PageSearchUser user;
     private String  content;
-    private int contentImage;
-    private int thumbUp;
-    private List<Comment> commentList;
-    private Style Style;
+    private List<Image> images;
+    private int admireCount;
+    private int commentCount;
 
-    public User getUser() {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getStyleId() {
+        return styleId;
+    }
+
+    public void setStyleId(int styleId) {
+        this.styleId = styleId;
+    }
+
+    public String getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
+    public PageSearchUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(PageSearchUser user) {
         this.user = user;
     }
 
@@ -26,45 +63,40 @@ public class Topic {
         this.content = content;
     }
 
-    public int getContentImage() {
-        return contentImage;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setContentImage(int contentImage) {
-        this.contentImage = contentImage;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
-    public int getThumbUp() {
-        return thumbUp;
+    public int getAdmireCount() {
+        return admireCount;
     }
 
-    public void setThumbUp(int thumbUp) {
-        this.thumbUp = thumbUp;
+    public void setAdmireCount(int admireCount) {
+        this.admireCount = admireCount;
     }
 
-    public List<Comment> getCommentList() {
-        return commentList;
+    public int getCommentCount() {
+        return commentCount;
     }
 
-    public void setCommentList(List<Comment> commentList) {
-        this.commentList = commentList;
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
-    public Style getStyle() {
-        return Style;
-    }
-
-    public void setStyle(Style Style) {
-        this.Style = Style;
-    }
-
-    public Topic(User user, String content, int contentImage, int thumbUp, List<Comment> commentList, Style Style) {
+    public Topic(int id, int userId, int styleId, String releaseTime, PageSearchUser user, String content, List<Image> images, int admireCount, int commentCount) {
+        this.id = id;
+        this.userId = userId;
+        this.styleId = styleId;
+        this.releaseTime = releaseTime;
         this.user = user;
         this.content = content;
-        this.contentImage = contentImage;
-        this.thumbUp = thumbUp;
-        this.commentList = commentList;
-        this.Style = Style;
+        this.images = images;
+        this.admireCount = admireCount;
+        this.commentCount = commentCount;
     }
 
     public Topic() {

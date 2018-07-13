@@ -15,10 +15,13 @@ import android.widget.Toast;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.Topic;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DiscoveryContentAdapter extends RecyclerView.Adapter<DiscoveryContentAdapter.ViewHolder> {
     private List<Topic> topicList;
+    //private List<Map> styleMap;
     private OnItemClickListener onItemClickListener;
 
 
@@ -46,9 +49,9 @@ public class DiscoveryContentAdapter extends RecyclerView.Adapter<DiscoveryConte
         Topic topic = topicList.get(position);
        // holder.head.setBackgroundResource(topic.getUser().getHeadImage());
         holder.name.setText(topic.getUser().getNickname());
-        holder.img.setBackgroundResource(topic.getContentImage());
-        holder.thumbUpCount.setText(topic.getThumbUp() + "");
-        holder.commentCount.setText(topic.getCommentList().size() + "");
+        //holder.img.setBackgroundResource(topic.getContentImage());
+        holder.thumbUpCount.setText(topic.getAdmireCount() + "");
+        holder.commentCount.setText(topic.getCommentCount() + "");
         holder.content.setText(topic.getContent());
         holder.img.setTag(position);
         holder.thumbUp.setTag(position);
@@ -84,11 +87,11 @@ public class DiscoveryContentAdapter extends RecyclerView.Adapter<DiscoveryConte
             switch (v.getId()) {
                 case R.id.item_discovery_1_thumb_up:
                     if (thumbUp.getText().toString().equals("点赞")) {
-                        thumbUpCount.setText((topicList.get((int) v.getTag()).getThumbUp()+1)+"");
+                        thumbUpCount.setText((topicList.get((int) v.getTag()).getAdmireCount()+1)+"");
                         thumbUp.setText("已赞");
                         thumbUp.setTextColor(Color.RED);
                     } else {
-                        thumbUpCount.setText(topicList.get((int) v.getTag()).getThumbUp()+"");
+                        thumbUpCount.setText(topicList.get((int) v.getTag()).getAdmireCount()+"");
                         thumbUp.setText("点赞");
                         thumbUp.setTextColor(Color.parseColor("#ff62b6d7"));
                     }

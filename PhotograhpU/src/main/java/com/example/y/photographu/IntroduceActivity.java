@@ -1,6 +1,5 @@
 package com.example.y.photographu;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,9 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.y.photographu.adapter.PhotographJudgementAdapter;
-import com.example.y.photographu.adapter.PhotographerRollViewPagerAdapter;
 import com.example.y.photographu.beans.Photographer;
 import com.jude.rollviewpager.RollPagerView;
 
@@ -59,10 +56,10 @@ public class IntroduceActivity extends BaseActivity implements View.OnClickListe
         price.setText("￥"+photographer.getPrice());
         name.setText(photographer.getUser().getNickname());
         introduce.setText(photographer.getIntroduce());
-        service.setText(photographer.getService());
-        commentCount.setText("("+photographer.getPhotographerCommentList().size()+")");
+        //service.setText(photographer.getService());
+       // commentCount.setText("("+photographer.getPhotographerCommentList().size()+")");
        // head.setImageResource(photographer.getUser().getHeadImage());
-        rollPagerView.setAdapter(new PhotographerRollViewPagerAdapter(photographer.getPhotoList()));
+        //rollPagerView.setAdapter(new PhotographerRollViewPagerAdapter(photographer.getPhotos()));
 
 
     }

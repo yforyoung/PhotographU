@@ -1,30 +1,24 @@
 package com.example.y.photographu.beans;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Photographer implements Serializable{
+public class Photographer {
+    private int id;
     private User user;
-    private float price;
-    private String service;
+    private String cardNo;
+    private String cardImage;
+    private double price;
+    private String serverContent;
     private String introduce;
-    private List<PhotographerComment> photographerCommentList;
-    private List<Integer> photoList;
+    private int starValue;
+    private List<Photo> photos;
 
-    public List<Integer> getPhotoList() {
-        return photoList;
+    public int getId() {
+        return id;
     }
 
-    public void setPhotoList(List<Integer> photoList) {
-        this.photoList = photoList;
-    }
-
-    public String getIntroduce() {
-        return introduce;
-    }
-
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -35,38 +29,59 @@ public class Photographer implements Serializable{
         this.user = user;
     }
 
-    public float getPrice() {
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
+    }
+
+    public String getCardImage() {
+        return cardImage;
+    }
+
+    public void setCardImage(String cardImage) {
+        this.cardImage = cardImage;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getService() {
-        return service;
+    public String getServerContent() {
+        return serverContent;
     }
 
-    public void setService(String service) {
-        this.service = service;
+    public void setServerContent(String serverContent) {
+        this.serverContent = serverContent;
     }
 
-    public List<PhotographerComment> getPhotographerCommentList() {
-        return photographerCommentList;
+    public String getIntroduce() {
+        return introduce;
     }
 
-    public void setPhotographerCommentList(List<PhotographerComment> photographerCommentList) {
-        this.photographerCommentList = photographerCommentList;
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
     }
 
-    public Photographer() {
+    public int getStarValue() {
+        return starValue;
     }
 
-    public Photographer(User user, float price, String service,String introduce,List<PhotographerComment> photographerCommentList) {
-        this.user = user;
-        this.price = price;
-        this.service = service;
-        this.introduce=introduce;
-        this.photographerCommentList = photographerCommentList;
+    public void setStarValue(int starValue) {
+        this.starValue = starValue;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 }

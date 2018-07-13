@@ -7,12 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,7 +23,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.y.photographu.beans.User;
 import com.example.y.photographu.fragment.FragmentAppointment;
 import com.example.y.photographu.fragment.FragmentDiscovery;
@@ -37,13 +33,15 @@ import com.google.gson.Gson;
 import java.lang.reflect.Field;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    private static final String TAG = "MainActivity";
     private FragmentManager manager;
     private FragmentHome fragmentHome;
     private FragmentDiscovery fragmentDiscovery;
     private FragmentAppointment fragmentAppointment;
     private FragmentMine fragmentMine;
     private View contentView;
-    private final static String TAG = "MainActivity";
+    private Fragment currentFragment;
+
 
     @SuppressLint("CommitTransaction")
     @Override
@@ -51,9 +49,10 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        if (Test.getInstance().user==null){
-            String u=new Util().read(this);
-            Test.getInstance().user= new Gson().fromJson(u, User.class);
+        if (Test.getInstance().user == null) {
+            String u = new Util().read(this);
+            Log.i(TAG, "onCreate: "+u);
+            Test.getInstance().user = new Gson().fromJson(u, User.class);
         }
 
         manager = getSupportFragmentManager();      //初始化管理者
@@ -71,7 +70,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.popup_new, null);
 
 
-        RelativeLayout search=toolbar.findViewById(R.id.search);
+        RelativeLayout search = toolbar.findViewById(R.id.search);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,10 +107,17 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     }
 
     private void showFragment(Fragment fragment) {
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.commit();//提交事务
+        if (currentFragment == null)
+            currentFragment = new Fragment();
 
+        if (currentFragment != fragment) {
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.hide(currentFragment);
+            if (!fragment.isAdded())
+                transaction.add(R.id.fragment_container, fragment);
+            transaction.show(fragment).commit();
+        }
+        currentFragment=fragment;
     }
 
     @Override
