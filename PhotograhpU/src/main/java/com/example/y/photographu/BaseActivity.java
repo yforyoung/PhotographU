@@ -61,6 +61,7 @@ public class BaseActivity extends AppCompatActivity {
         handler.sendMessage(message);
     }
 
+
     public void doPost(final Request request) {
         runOnUiThread(new Runnable() {
             @Override

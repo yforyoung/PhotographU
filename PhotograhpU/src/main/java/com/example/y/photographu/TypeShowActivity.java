@@ -37,10 +37,12 @@ public class TypeShowActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_show);
-        Toolbar toolbar = findViewById(R.id.type_show_toolbar);
+
+        type = (Style) getIntent().getSerializableExtra("type");
+
+        Toolbar toolbar = findViewById(R.id.toolbar_normal);
         setSupportActionBar(toolbar);
-        TextView title = toolbar.findViewById(R.id.type_show_toolbar_title);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle(type.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +50,6 @@ public class TypeShowActivity extends BaseActivity {
                 finish();
             }
         });
-
-        type = (Style) getIntent().getSerializableExtra("type");
-        title.setText(type.getName());
 
         topicList = new ArrayList<>();
 

@@ -22,7 +22,6 @@ public class FindPasswordActivity extends BaseActivity implements View.OnClickLi
     private Button sendCode;
     private Button confirm;
     private String cookie;
-
     private String userPhone;
 
 
@@ -31,7 +30,7 @@ public class FindPasswordActivity extends BaseActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password);
 
-        Toolbar toolbar = findViewById(R.id.load_toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_normal);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("找回密码");

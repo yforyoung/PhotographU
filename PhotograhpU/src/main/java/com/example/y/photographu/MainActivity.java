@@ -1,6 +1,7 @@
 package com.example.y.photographu;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.y.photographu.beans.User;
 import com.example.y.photographu.fragment.FragmentAppointment;
 import com.example.y.photographu.fragment.FragmentDiscovery;
@@ -41,6 +43,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     private FragmentMine fragmentMine;
     private View contentView;
     private Fragment currentFragment;
+    private TextView schoolName;
+    private RelativeLayout search;
+    private TextView userNews;
+    private TextView photographNews;
+    private BottomNavigationView navigation;
 
 
     @SuppressLint("CommitTransaction")
@@ -51,8 +58,12 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         initView();
         if (Test.getInstance().user == null) {
             String u = new Util().read(this);
-            Log.i(TAG, "onCreate: "+u);
+            Log.i(TAG, "onCreate: " + u);
             Test.getInstance().user = new Gson().fromJson(u, User.class);
+            Test.getInstance().cookie=getSharedPreferences("user_info",MODE_PRIVATE)
+                    .getString("cookie","");
+
+
         }
 
         manager = getSupportFragmentManager();      //初始化管理者
@@ -61,28 +72,32 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        schoolName.setText(Test.getInstance().user.getSchool());
+    }
+
     private void initView() {
+        /*toolbar初始化*/
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        BottomNavigationView navigation = findViewById(R.id.navigation);    //bottomNavigation用于选择Fragment
-        navigation.setOnNavigationItemSelectedListener(this);
+
+        navigation = findViewById(R.id.navigation);    //bottomNavigation用于选择Fragment
         contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.popup_new, null);
+        schoolName = toolbar.findViewById(R.id.school);
+        search = toolbar.findViewById(R.id.search);
+        userNews = contentView.findViewById(R.id.popup_user);
+        photographNews = contentView.findViewById(R.id.popup_photograph);
 
-
-        RelativeLayout search = toolbar.findViewById(R.id.search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "本功能暂未开放", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        TextView userNews = contentView.findViewById(R.id.popup_user);
-        TextView photographNews = contentView.findViewById(R.id.popup_photograph);
-
+        schoolName.setOnClickListener(this);
         photographNews.setOnClickListener(this);
         userNews.setOnClickListener(this);
+        search.setOnClickListener(this);
+        navigation.setOnNavigationItemSelectedListener(this);
+
+
         disableShiftMode(navigation);
     }
 
@@ -106,6 +121,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(currentFragment);
+        transaction.commit();
+        /*if (transaction.isEmpty())
+            super.onBackPressed();*/
+    }
+
     private void showFragment(Fragment fragment) {
         if (currentFragment == null)
             currentFragment = new Fragment();
@@ -117,7 +142,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 transaction.add(R.id.fragment_container, fragment);
             transaction.show(fragment).commit();
         }
-        currentFragment=fragment;
+        currentFragment = fragment;
     }
 
     @Override
@@ -190,6 +215,10 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 break;
             case R.id.popup_photograph:
                 Toast.makeText(MainActivity.this, "本功能暂未开放", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.school:
+                Intent intent = new Intent(this, SchoolChooseActivity.class);
+                startActivity(intent);
                 break;
             default:
         }

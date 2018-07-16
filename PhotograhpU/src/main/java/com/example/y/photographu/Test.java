@@ -8,8 +8,7 @@ public class Test {
     private static final Test test=new Test();
     public User user;
     public String cookie="";
-    public School school;
-
+    public School school=new School();
 
     private Test(){}
 

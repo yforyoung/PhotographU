@@ -5,13 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
-    <android.support.v7.widget.Toolbar
-        android:theme="@style/AppTheme.PopupOverlay"
-        android:id="@+id/load_toolbar"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/toolbar" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/count"

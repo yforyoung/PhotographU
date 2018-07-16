@@ -1,6 +1,5 @@
 package com.example.y.photographu;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,7 +23,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private Button registerButton;
     private String userPhone="";
     private String cookie;
-    private Util util=new Util();
 
     private final static String TAG="RegisterActivity";
 
@@ -44,7 +42,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
-        toolbar = findViewById(R.id.load_toolbar);
+        toolbar = findViewById(R.id.toolbar_normal);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("账号注册");

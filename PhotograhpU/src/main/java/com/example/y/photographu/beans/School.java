@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class School implements Serializable {
     private String name;
-    private String provance;
+    private int province;
     private String city;
 
     public School() {
     }
 
-    public School(String name, String provance, String city) {
+    public School(String name, int province, String city) {
         this.name = name;
-        this.provance = provance;
+        this.province = province;
         this.city = city;
     }
 
@@ -24,12 +24,12 @@ public class School implements Serializable {
         this.name = name;
     }
 
-    public String getProvance() {
-        return provance;
+    public int getProvince() {
+        return province;
     }
 
-    public void setProvance(String provance) {
-        this.provance = provance;
+    public void setProvince(int province) {
+        this.province = province;
     }
 
     public String getCity() {
