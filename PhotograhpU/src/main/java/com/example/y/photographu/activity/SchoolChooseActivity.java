@@ -1,40 +1,29 @@
-package com.example.y.photographu;
+package com.example.y.photographu.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
+import com.example.y.photographu.R;
 import com.example.y.photographu.fragment.school.FragmentProvinceShow;
 
 public class SchoolChooseActivity extends BaseActivity {
 
-    FragmentProvinceShow fragmentProvinceShow;
-    Fragment currentFragment;
-    FragmentManager manager;
+    private FragmentProvinceShow fragmentProvinceShow;
+    private Fragment currentFragment;
+    private FragmentManager manager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_choose);
+        initView("选择");
+        initListener();
 
-        Toolbar toolbar = findViewById(R.id.toolbar_normal);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("选择");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
-        fragmentProvinceShow=new FragmentProvinceShow();
-        manager=getSupportFragmentManager();
+        fragmentProvinceShow = new FragmentProvinceShow();
+        manager = getSupportFragmentManager();
         showFragment(fragmentProvinceShow);
 
     }
@@ -47,9 +36,18 @@ public class SchoolChooseActivity extends BaseActivity {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.hide(currentFragment);
             if (!fragment.isAdded())
-                transaction.add(R.id.school_choose_content, fragment);
+                transaction.add(R.id.school_choose_content, fragment, String.valueOf(1));
             transaction.show(fragment).commit();
         }
         currentFragment = fragment;
+    }
+
+    @Override
+    public void onBackPressed() {
+        /*FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(currentFragment);
+        transaction.commit();
+        if (transaction.isEmpty())*/
+            super.onBackPressed();
     }
 }

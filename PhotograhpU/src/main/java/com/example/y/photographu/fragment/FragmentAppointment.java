@@ -1,6 +1,5 @@
 package com.example.y.photographu.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,27 +10,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.y.photographu.BaseActivity;
-import com.example.y.photographu.IntroduceActivity;
 import com.example.y.photographu.R;
-import com.example.y.photographu.Test;
 import com.example.y.photographu.adapter.AppointmentPhotographAdapter;
 import com.example.y.photographu.beans.PageBean;
 import com.example.y.photographu.beans.Photographer;
 import com.example.y.photographu.beans.ResponseData;
+import com.example.y.photographu.util.OkHttpUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import okhttp3.FormBody;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import java.util.Map;
 import okhttp3.Response;
-
 import static android.support.constraint.Constraints.TAG;
 
 public class FragmentAppointment extends Fragment {
@@ -72,28 +64,27 @@ public class FragmentAppointment extends Fragment {
     }
 
     private void initData() {
-        RequestBody requestBody=new FormBody.Builder()
-                .add("school","西华大学")
-               // .add("school",Test.getInstance().school.getName())
-                .add("page_size",20+"")
-                .add("current_page",page+"")
-                .build();
-        final Request request=new Request.Builder()
-                .post(requestBody)
-                .url("http://www.xhban.com:8080/photograph_u/user/listPhotographersBySchoolWithPage")
-                .build();
-        ((BaseActivity)getActivity()).doPost(request);
-        ((BaseActivity)getActivity()).setHandleResponse(new BaseActivity.HandleResponse() {
-            @Override
-            public void handleResponses(Response response) throws IOException {
-                String s=response.body().string();
-                ResponseData responseData=new Gson().fromJson(s,new TypeToken<ResponseData<PageBean>>(){}.getType());
-                PageBean pageBean= (PageBean) responseData.getData();
-               // List<Object> photographerL=pageBean.getData();
-                Log.i(TAG, "handleResponses: ");
 
-            }
-        });
+        Map<String ,String> param=new HashMap<>();
+        param.put("school","西华大学");
+        param.put("page_size", String.valueOf(20));
+        param.put("current_page", String.valueOf(page));
+        OkHttpUtils.doPost("http://www.xhban.com:8080/photograph_u/user/listPhotographersBySchoolWithPage",
+                param, null, null, new OkHttpUtils.MyCallback() {
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+                        String s=response.body().string();
+                        ResponseData responseData=new Gson().fromJson(s,new TypeToken<ResponseData<PageBean>>(){}.getType());
+                        PageBean pageBean= (PageBean) responseData.getData();
+                        // List<Object> photographerL=pageBean.getData();
+                        Log.i(TAG, "handleResponses: ");
+                    }
+
+                    @Override
+                    public void onFailure(IOException e) {
+
+                    }
+                });
 
     }
 }

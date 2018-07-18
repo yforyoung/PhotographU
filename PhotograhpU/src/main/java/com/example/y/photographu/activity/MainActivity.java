@@ -1,4 +1,4 @@
-package com.example.y.photographu;
+package com.example.y.photographu.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -25,17 +24,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.y.photographu.App;
+import com.example.y.photographu.R;
 import com.example.y.photographu.beans.User;
 import com.example.y.photographu.fragment.FragmentAppointment;
 import com.example.y.photographu.fragment.FragmentDiscovery;
 import com.example.y.photographu.fragment.FragmentHome;
 import com.example.y.photographu.fragment.FragmentMine;
+import com.example.y.photographu.util.FileUtil;
+import com.example.y.photographu.util.SpfUtil;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Field;
 
-public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private static final String TAG = "MainActivity";
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener
+        , View.OnClickListener {
+
     private FragmentManager manager;
     private FragmentHome fragmentHome;
     private FragmentDiscovery fragmentDiscovery;
@@ -55,16 +59,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
-        if (Test.getInstance().user == null) {
-            String u = new Util().read(this);
-            Log.i(TAG, "onCreate: " + u);
-            Test.getInstance().user = new Gson().fromJson(u, User.class);
-            Test.getInstance().cookie=getSharedPreferences("user_info",MODE_PRIVATE)
-                    .getString("cookie","");
+        initView("");
+        initListener();
 
-
-        }
+        App.getInstance().cookie= SpfUtil.getString("user_cookie","");
+        App.getInstance().user=new Gson().fromJson(FileUtil.read("userData"),User.class);
 
         manager = getSupportFragmentManager();      //初始化管理者
         fragmentHome = new FragmentHome();      //第一页Fragment
@@ -75,11 +74,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     protected void onResume() {
         super.onResume();
-        schoolName.setText(Test.getInstance().user.getSchool());
+        schoolName.setText(App.getInstance().user.getSchool());
     }
 
-    private void initView() {
-        /*toolbar初始化*/
+    @Override
+    public void initView(String title) {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -91,14 +90,17 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         userNews = contentView.findViewById(R.id.popup_user);
         photographNews = contentView.findViewById(R.id.popup_photograph);
 
+        disableShiftMode(navigation);
+    }
+
+    @Override
+    public void initListener() {
+        super.initListener();
         schoolName.setOnClickListener(this);
         photographNews.setOnClickListener(this);
         userNews.setOnClickListener(this);
         search.setOnClickListener(this);
         navigation.setOnNavigationItemSelectedListener(this);
-
-
-        disableShiftMode(navigation);
     }
 
     @SuppressLint("RestrictedApi")
@@ -123,12 +125,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     @Override
     public void onBackPressed() {
-
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.remove(currentFragment);
-        transaction.commit();
-        /*if (transaction.isEmpty())
-            super.onBackPressed();*/
+        super.onBackPressed();
     }
 
     private void showFragment(Fragment fragment) {

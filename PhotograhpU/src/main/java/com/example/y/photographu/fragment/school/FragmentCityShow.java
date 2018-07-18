@@ -15,21 +15,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.y.photographu.BaseActivity;
+import com.example.y.photographu.App;
 import com.example.y.photographu.R;
-import com.example.y.photographu.SchoolChooseActivity;
-import com.example.y.photographu.Test;
-import com.example.y.photographu.beans.School;
-import com.google.gson.JsonArray;
+import com.example.y.photographu.activity.SchoolChooseActivity;
+import com.example.y.photographu.util.OkHttpUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import okhttp3.FormBody;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class FragmentCityShow extends Fragment {
@@ -37,7 +34,7 @@ public class FragmentCityShow extends Fragment {
     private List<String> cityList;
     private ArrayAdapter adapter;
     @SuppressLint("HandlerLeak")
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -57,26 +54,27 @@ public class FragmentCityShow extends Fragment {
         super.onActivityCreated(savedInstanceState);
         cityList = new ArrayList<>();
         /*查询城市*/
-        RequestBody requestBody = new FormBody.Builder()
-                .add("id", Test.getInstance().school.getProvince() + "")
-                .build();
-        final Request request = new Request.Builder()
-                .post(requestBody)
-                .url("http://119.29.166.254:9090/api/province/getCitiesByProvinceId/")
-                .build();
-        ((BaseActivity) getActivity()).doPost(request);
-        ((BaseActivity) getActivity()).setHandleResponse(new BaseActivity.HandleResponse() {
-            @Override
-            public void handleResponses(Response response) throws IOException {
-                String s = response.body().string();
-                Log.i(TAG, "handleResponses: " + s);
-                s = s.substring(2, s.indexOf("\"]"));
-                Log.i(TAG, "handleResponses: " + s);
-                String citys[] = s.split("\",\"");
-                cityList.addAll(Arrays.asList(citys));
-                handler.sendMessage(Message.obtain());
-            }
-        });
+        Map<String, String> param = new HashMap<>();
+        param.put("id", App.getInstance().school.getProvince() + "");
+        OkHttpUtils.doPost("http://119.29.166.254:9090/api/province/getCitiesByProvinceId/", param,
+                null, null,
+                new OkHttpUtils.MyCallback() {
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+                        String s = response.body().string();
+                        Log.i(TAG, "handleResponses: " + s);
+                        s = s.substring(2, s.indexOf("\"]"));
+                        Log.i(TAG, "handleResponses: " + s);
+                        String citys[] = s.split("\",\"");
+                        cityList.addAll(Arrays.asList(citys));
+                        handler.sendMessage(Message.obtain());
+                    }
+
+                    @Override
+                    public void onFailure(IOException e) {
+
+                    }
+                });
 
         adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, cityList);
         ListView listView = getActivity().findViewById(R.id.city_list);
@@ -84,8 +82,8 @@ public class FragmentCityShow extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Test.getInstance().school.setCity(cityList.get(position));
-                ((SchoolChooseActivity)getActivity()).showFragment(new FragmentSchoolShow());
+                App.getInstance().school.setCity(cityList.get(position));
+                ((SchoolChooseActivity) getActivity()).showFragment(new FragmentSchoolShow());
 
             }
         });

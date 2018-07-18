@@ -8,4 +8,5 @@
     <string name="attention_to">关注</string>
     <string name="order_now">立即预约</string>
     <string name="judge">评价</string>
+    <string name="user_data_save_file">userFile</string>
 </resources>

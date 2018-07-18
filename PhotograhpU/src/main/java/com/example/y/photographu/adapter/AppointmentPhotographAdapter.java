@@ -1,6 +1,5 @@
 package com.example.y.photographu.adapter;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.y.photographu.IntroduceActivity;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.Photographer;
 import java.util.List;

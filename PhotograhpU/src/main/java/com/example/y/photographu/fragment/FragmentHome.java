@@ -13,15 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.y.photographu.BaseActivity;
-import com.example.y.photographu.MainActivity;
+import com.example.y.photographu.activity.BaseActivity;
 import com.example.y.photographu.R;
-import com.example.y.photographu.TypeShowActivity;
-import com.example.y.photographu.Util;
+import com.example.y.photographu.activity.TypeShowActivity;
 import com.example.y.photographu.adapter.StyleAdapter;
 import com.example.y.photographu.adapter.HomeRollViewPagerAdapter;
 import com.example.y.photographu.beans.ResponseData;
 import com.example.y.photographu.beans.Style;
+import com.example.y.photographu.util.OkHttpUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jude.rollviewpager.RollPagerView;
@@ -31,7 +30,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Request;
 import okhttp3.Response;
 
 import static android.support.constraint.Constraints.TAG;
@@ -49,7 +47,7 @@ public class FragmentHome extends Fragment {
         super.onCreate(savedInstanceState);
         typeList = new ArrayList<>();
         initData();
-        Log.i(TAG, "onCreate: ");
+
     }
 
     @Nullable
@@ -89,24 +87,26 @@ public class FragmentHome extends Fragment {
     }
 
     private void initData() {
-        Request request = new Request.Builder()
-                .url("http://www.xhban.com:8080/photograph_u/user/listAllStyles")
-                .build();
-        Util util = new Util();
-        util.doPost((MainActivity) getActivity(), request);
-        util.setHandleResponse(new Util.HandleResponse() {
-            @Override
-            public void handleResponses(Response response) throws IOException {
-                String s = response.body().string();
-                Log.i(TAG, "handleResponses: " + s);
-                ResponseData responseData = new Gson().fromJson(s, new TypeToken<ResponseData<List<Style>>>() {
-                }.getType());
-                typeList.addAll((List<Style>) responseData.getData());
-                Log.i(TAG, "handleResponses: ");
-               // adapter.notifyDataSetChanged();
-                ((BaseActivity)getActivity()).refreshAdapter(adapter);
-            }
-        });
+        OkHttpUtils.doPost("http://www.xhban.com:8080/photograph_u/user/listAllStyles",
+                null, null, null,
+                new OkHttpUtils.MyCallback() {
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+                        String s = response.body().string();
+                        Log.i(TAG, "handleResponses: " + s);
+                        ResponseData responseData = new Gson().fromJson(s, new TypeToken<ResponseData<List<Style>>>() {
+                        }.getType());
+                        typeList.addAll((List<Style>) responseData.getData());
+                        Log.i(TAG, "handleResponses: ");
+                        // adapter.notifyDataSetChanged();
+                        ((BaseActivity) getActivity()).refreshAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onFailure(IOException e) {
+
+                    }
+                });
     }
 
 

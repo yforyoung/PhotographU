@@ -1,4 +1,4 @@
-package com.example.y.photographu;
+package com.example.y.photographu.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.y.photographu.R;
 import com.example.y.photographu.adapter.PhotographJudgementAdapter;
 import com.example.y.photographu.beans.Photographer;
 import com.jude.rollviewpager.RollPagerView;

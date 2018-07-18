@@ -1,10 +1,8 @@
 package com.example.y.photographu.fragment;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,17 +15,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
-import com.example.y.photographu.BaseActivity;
-import com.example.y.photographu.LoadActivity;
+import com.example.y.photographu.activity.LoadActivity;
 import com.example.y.photographu.R;
-import com.example.y.photographu.Test;
-import com.example.y.photographu.TypeShowActivity;
+import com.example.y.photographu.App;
 import com.example.y.photographu.beans.User;
+import com.example.y.photographu.util.SpfUtil;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.ContentValues.TAG;
-import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentMine extends Fragment implements View.OnClickListener {
     private CircleImageView headPic;
@@ -59,8 +55,8 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
     }
 
     private void initUserInfo() {
-        if (Test.getInstance().user != null) {
-            User user=Test.getInstance().user;
+        if (App.getInstance().user != null) {
+            User user= App.getInstance().user;
             nickname.setText(user.getNickname());
             Glide.with(this)
                     .load("http://www.xhban.com:8080/photograph_u/head_images/"
@@ -99,10 +95,9 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.exit:
-                exitShow();
+                logout();
                 break;
             case R.id.my_apply:
-
                 break;
             case R.id.my_collection:
                 break;
@@ -131,7 +126,7 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
     }
 
 
-    private void exitShow() {
+    private void logout() {
         new AlertDialog.Builder(mContext)
                 .setTitle("")
                 .setMessage("确定退出账号？")
@@ -147,9 +142,8 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
     }
 
     private void exit() {
-        SharedPreferences.Editor editor = mContext.getSharedPreferences("user_info", MODE_PRIVATE).edit();
-        editor.putInt("user",0);
-        editor.apply();
+        SpfUtil.putString("phone","");
+        SpfUtil.putString("password","");
         Intent intent=new Intent(mContext, LoadActivity.class);
         startActivity(intent);
         mContext.finish();
