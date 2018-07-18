@@ -8,12 +8,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.y.photographu.R;
-import com.example.y.photographu.Util;
 import com.example.y.photographu.beans.Style;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
-
-import okhttp3.Request;
-import okhttp3.RequestBody;
 
 
 public class HomeRollViewPagerAdapter extends StaticPagerAdapter {
