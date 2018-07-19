@@ -5,76 +5,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/mine_head"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/head_1"
-        app:civ_border_color="@color/colorPrimary"
-        app:civ_border_width="2dp"
-        tools:ignore="ContentDescription" />
+    <RelativeLayout
+        android:id="@+id/mine_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/mine_nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/mine_head"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/mine_head"
-        android:layout_toRightOf="@id/mine_head"
-        android:text="知别林"
-        android:textColor="#000"
-        android:textStyle="bold" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mine_head"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/head_1"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="2dp"
+            tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/mine_intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/mine_nickname"
-        android:layout_alignStart="@id/mine_nickname"
-        android:layout_below="@id/mine_nickname"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="靡不有初，鲜克有终" />
+        <TextView
+            android:id="@+id/mine_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/mine_head"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/mine_head"
+            android:layout_toRightOf="@id/mine_head"
+            android:text="知别林"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mine_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/mine_nickname"
+            android:layout_alignStart="@id/mine_nickname"
+            android:layout_below="@id/mine_nickname"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="靡不有初，鲜克有终" />
+    </RelativeLayout>
+
 
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_below="@id/mine_head"
+        android:layout_below="@id/mine_user"
         android:background="@color/colorBackground" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/my_note"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/line"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="我的发帖" />
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/line"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
+        android:layout_below="@id/line">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="我的发帖" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_home_more"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
@@ -82,30 +93,35 @@
         android:layout_below="@id/my_note"
         android:background="@color/colorBackground" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/my_concern"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/my_note"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="我的关注" />
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/my_note"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
+        android:layout_below="@id/my_note">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="我的关注" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_home_more"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -113,30 +129,35 @@
         android:layout_below="@id/my_concern"
         android:background="@color/colorBackground" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/my_history"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/my_concern"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="历史约拍" />
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/my_concern"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
+        android:layout_below="@id/my_concern">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="历史约拍" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_home_more"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -144,30 +165,36 @@
         android:layout_below="@id/my_history"
         android:background="@color/colorBackground" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/my_collection"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/my_history"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="我的收藏" />
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/my_history"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
+        android:layout_below="@id/my_history">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="我的收藏" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_home_more"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -175,30 +202,35 @@
         android:layout_below="@id/my_collection"
         android:background="@color/colorBackground" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/my_apply"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/my_collection"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="申请成为摄影师" />
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/my_collection"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
+        android:layout_below="@id/my_collection">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="申请成为摄影师" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_home_more"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -206,61 +238,35 @@
         android:layout_below="@id/my_apply"
         android:background="@color/colorBackground" />
 
-    <TextView
-        android:id="@+id/about_us"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/my_apply"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="关于我们" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/my_apply"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/about_us"
-        android:background="@color/colorBackground" />
-
-    <TextView
+    <RelativeLayout
         android:id="@+id/my_set"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_below="@id/about_us"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="设置" />
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/about_us"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_home_more"
-        tools:ignore="ContentDescription" />
+        android:layout_below="@id/my_apply">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="设置" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_home_more"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"

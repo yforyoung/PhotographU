@@ -4,12 +4,16 @@ package com.example.y.photographu.util;
 import android.os.Handler;
 import android.os.Looper;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -38,6 +42,29 @@ public class OkHttpUtils {
 
     public static void doPost(String url, Map<String, String> param, String headerName, String header, final MyCallback callback) {
         getInstance().inner_doPost(url, param, headerName, header, callback);
+    }
+
+    public static void postFiles(String url, List<String> params, final MyCallback callback) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        for (String s : params) {
+            builder.addFormDataPart("file", s, RequestBody.create(MediaType.parse("image/*"), new File(s)));
+        }
+        RequestBody requestBody = builder
+                .build();
+        client.newCall(new Request.Builder()
+                .addHeader("cookie", SpfUtil.getString("user_cookie", ""))
+                .post(requestBody)
+                .url(url)
+                .build()).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                callback.onResponse(response);
+            }
+        });
     }
 
 

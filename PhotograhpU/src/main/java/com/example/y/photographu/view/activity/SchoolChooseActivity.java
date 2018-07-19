@@ -1,4 +1,4 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.fragment.school.FragmentProvinceShow;
+import com.example.y.photographu.view.fragment.school.FragmentProvinceShow;
 
 public class SchoolChooseActivity extends BaseActivity {
 

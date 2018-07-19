@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference android:id="@+id/new_notify"
+        android:title="新消息通知"
+        />
+    <SwitchPreference android:id="@+id/sound"
+        android:title="通知声音"
+        />
+    <SwitchPreference android:id="@+id/shack"
+        android:title="通知振动"
+        />
+    <PreferenceScreen
+        android:key="about_us"
+        android:title="关于"
+        />
+</PreferenceScreen>

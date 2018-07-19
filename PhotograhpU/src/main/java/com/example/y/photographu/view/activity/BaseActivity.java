@@ -1,4 +1,5 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
+
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,9 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
-
 import com.example.y.photographu.R;
 import com.example.y.photographu.view.IBaseView;
+
 
 public class BaseActivity extends AppCompatActivity implements IBaseView {
     private Toast toast;
@@ -19,6 +20,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
     private static final int SHOW_TOAST = 1;
     private static final int REFRESH_ADAPTER = 2;
     private RecyclerView.Adapter adapter;
+
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
@@ -42,6 +44,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
             }
         }
     };
+
 
     @Override
     public void showToast(String s) {
@@ -80,5 +83,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
     public void initListener() {
 
     }
+
+
 
 }

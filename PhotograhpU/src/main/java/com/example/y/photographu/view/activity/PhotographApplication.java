@@ -1,4 +1,4 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
 import android.app.Application;
 

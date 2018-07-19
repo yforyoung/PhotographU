@@ -1,4 +1,4 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.presenter.RegisterPresenter;
+import com.example.y.photographu.presenter.RegisterPs;
 import com.example.y.photographu.view.IRegisterView;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener ,IRegisterView{
@@ -18,7 +18,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private EditText codeEdit;
     private Button sendTextButton;
     private Button registerButton;
-    private RegisterPresenter registerPresenter;
+    private RegisterPs registerPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_register);
         initView();
         initClickListener();
-        registerPresenter=new RegisterPresenter(this);
+        registerPresenter=new RegisterPs(this);
 
     }
 

@@ -13,12 +13,12 @@ import java.io.IOException;
 
 import okhttp3.Response;
 
-public class RegisterPresenter {
+public class RegisterPs {
     private IUserModel iUserModel;
     private ISendTextModel iSendTextModel;
     private IRegisterView iRegisterView;
 
-    public RegisterPresenter(IRegisterView iRegisterView) {
+    public RegisterPs(IRegisterView iRegisterView) {
         this.iRegisterView = iRegisterView;
         iSendTextModel = new SendTextModel();
         iUserModel = new UserModel();

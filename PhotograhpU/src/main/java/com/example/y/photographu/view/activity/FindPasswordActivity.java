@@ -1,4 +1,4 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.presenter.RegisterPresenter;
+import com.example.y.photographu.presenter.RegisterPs;
 import com.example.y.photographu.view.IRegisterView;
 
 
@@ -17,7 +17,7 @@ public class FindPasswordActivity extends BaseActivity implements View.OnClickLi
     private EditText codeEdit;
     private Button sendCode;
     private Button confirm;
-    private RegisterPresenter registerPresenter;
+    private RegisterPs registerPresenter;
 
 
 
@@ -27,7 +27,7 @@ public class FindPasswordActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_find_password);
         initView("找回密码");
         initListener();
-        registerPresenter=new RegisterPresenter(this);
+        registerPresenter=new RegisterPs(this);
 
     }
 

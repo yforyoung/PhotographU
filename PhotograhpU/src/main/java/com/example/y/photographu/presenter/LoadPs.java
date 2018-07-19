@@ -19,11 +19,11 @@ import okhttp3.Response;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class LoadPresenter {    //从model层获取数据，进行一定的逻辑处理，交予view进行显示
+public class LoadPs {    //从model层获取数据，进行一定的逻辑处理，交予view进行显示
     private IUserModel mIUserModel;
     private ILoadView mILoadView;
 
-    public LoadPresenter(ILoadView mILoadView) {
+    public LoadPs(ILoadView mILoadView) {
         this.mILoadView = mILoadView;
         mIUserModel = new UserModel();
 

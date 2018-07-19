@@ -1,4 +1,4 @@
-package com.example.y.photographu.fragment.school;
+package com.example.y.photographu.view.fragment.school;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.y.photographu.App;
-import com.example.y.photographu.activity.BaseActivity;
+import com.example.y.photographu.view.activity.BaseActivity;
 import com.example.y.photographu.R;
-import com.example.y.photographu.activity.SchoolChooseActivity;
+import com.example.y.photographu.view.activity.SchoolChooseActivity;
 import com.example.y.photographu.adapter.ProvinceAdapter;
 import com.example.y.photographu.beans.Province;
 import com.example.y.photographu.util.OkHttpUtils;

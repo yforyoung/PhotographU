@@ -1,4 +1,4 @@
-package com.example.y.photographu.fragment.school;
+package com.example.y.photographu.view.fragment.school;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.y.photographu.App;
-import com.example.y.photographu.activity.BaseActivity;
+import com.example.y.photographu.view.activity.BaseActivity;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.ResponseData;
 import com.example.y.photographu.util.FileUtil;

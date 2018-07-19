@@ -1,4 +1,4 @@
-package com.example.y.photographu.fragment.school;
+package com.example.y.photographu.view.fragment.school;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import com.example.y.photographu.App;
 import com.example.y.photographu.R;
-import com.example.y.photographu.activity.SchoolChooseActivity;
+import com.example.y.photographu.view.activity.SchoolChooseActivity;
 import com.example.y.photographu.util.OkHttpUtils;
 
 import java.io.IOException;

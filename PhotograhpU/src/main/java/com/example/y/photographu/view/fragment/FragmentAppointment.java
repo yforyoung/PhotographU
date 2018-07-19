@@ -1,4 +1,4 @@
-package com.example.y.photographu.fragment;
+package com.example.y.photographu.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -77,7 +77,7 @@ public class FragmentAppointment extends Fragment {
                         ResponseData responseData=new Gson().fromJson(s,new TypeToken<ResponseData<PageBean>>(){}.getType());
                         PageBean pageBean= (PageBean) responseData.getData();
                         // List<Object> photographerL=pageBean.getData();
-                        Log.i(TAG, "handleResponses: ");
+                        Log.i(TAG, "handleResponses: "+s);
                     }
 
                     @Override

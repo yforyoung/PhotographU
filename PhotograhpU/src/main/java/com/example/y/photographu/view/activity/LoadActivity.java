@@ -1,34 +1,52 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.y.photographu.R;
-import com.example.y.photographu.presenter.LoadPresenter;
+import com.example.y.photographu.presenter.LoadPs;
+import com.example.y.photographu.util.HandleImageUtil;
 import com.example.y.photographu.view.ILoadView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoadActivity extends BaseActivity implements View.OnClickListener, ILoadView {
     private final static String TAG = "info";
-    private LoadPresenter loadPresenter;
+    private LoadPs loadPs;
     private EditText loadUser;
     private EditText loadPassword;
     private TextView findPassword;
     private TextView register;
     private Button load;
+    private List<String> pList = new ArrayList<>();
+    private String[] permissions = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load);
+        request();
         initView("");
         initListener();
-        loadPresenter=new LoadPresenter(this);
-        loadPresenter.autoLogin();
+        loadPs =new LoadPs(this);
+        loadPs.autoLogin();
     }
 
     @Override
@@ -61,7 +79,7 @@ public class LoadActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent2);
                 break;
             case R.id.load_button:
-                loadPresenter.login(getUserPhone(),getPassword());
+                loadPs.login(getUserPhone(),getPassword());
                 break;
             default:
 
@@ -100,4 +118,34 @@ public class LoadActivity extends BaseActivity implements View.OnClickListener, 
     public void showFailMessage(String s) {
         showToast(s);
     }
+
+    public void request() {         //请求权限
+        pList.clear();
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                pList.add(permission);
+            }
+        }
+        if (!pList.isEmpty()) {
+            String[] permissions = pList.toArray(new String[pList.size()]);//将List转为数组
+            ActivityCompat.requestPermissions(this, permissions, 1);
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 1) {
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                    boolean showRequestPermission = ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i]);
+                    if (showRequestPermission) {
+                        Toast.makeText(this, "您拒绝了权限!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
 }

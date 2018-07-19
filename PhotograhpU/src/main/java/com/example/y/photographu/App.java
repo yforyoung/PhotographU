@@ -38,11 +38,6 @@ public class App {
         this.mainThread=Thread.currentThread();
     }
 
-    public static Context getAppContext(){
-        return App.getInstance().getContext();
-    }
-
-
     public Context getContext() {
         return context;
     }

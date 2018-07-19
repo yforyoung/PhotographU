@@ -1,13 +1,13 @@
 package com.example.y.photographu.beans;
 
-import java.util.Date;
+
 
 public class User {
     private int id;
     private String nickname;
     private String headImage;
     private String sex;
-    private Date birthday;
+    private String birthday;
     private String phone;
     private String password;
     private String school;
@@ -44,11 +44,11 @@ public class User {
         this.sex = sex;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

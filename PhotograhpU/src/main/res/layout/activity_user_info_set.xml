@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.UserInfoSetActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="72dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="昵称"
+        android:textColor="#000"
+        android:paddingStart="20dp"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/set_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="72dp"
+        android:background="@null"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/set_nickname"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="性别"
+        android:textColor="#000"
+        android:paddingStart="20dp"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/set_sex"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/set_nickname"
+        android:background="@null"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/set_sex"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="生日"
+        android:textColor="#000"
+        android:paddingStart="20dp"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/set_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/set_sex"
+        android:background="@null"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

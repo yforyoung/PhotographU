@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.y.photographu.fragment.discovery.FragmentDiscoveryMyAttention;
-import com.example.y.photographu.fragment.discovery.FragmentDiscoveryRecommend;
+import com.example.y.photographu.view.fragment.discovery.FragmentDiscoveryMyAttention;
+import com.example.y.photographu.view.fragment.discovery.FragmentDiscoveryRecommend;
 
 public class DiscoveryViewPagerAdapter extends FragmentPagerAdapter {
     private  Fragment fragment[]=new Fragment[]{new FragmentDiscoveryMyAttention(),

@@ -1,4 +1,4 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -27,10 +27,10 @@ import android.widget.Toast;
 import com.example.y.photographu.App;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.User;
-import com.example.y.photographu.fragment.FragmentAppointment;
-import com.example.y.photographu.fragment.FragmentDiscovery;
-import com.example.y.photographu.fragment.FragmentHome;
-import com.example.y.photographu.fragment.FragmentMine;
+import com.example.y.photographu.view.fragment.FragmentAppointment;
+import com.example.y.photographu.view.fragment.FragmentDiscovery;
+import com.example.y.photographu.view.fragment.FragmentHome;
+import com.example.y.photographu.view.fragment.FragmentMine;
 import com.example.y.photographu.util.FileUtil;
 import com.example.y.photographu.util.SpfUtil;
 import com.google.gson.Gson;
@@ -95,7 +95,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     @Override
     public void initListener() {
-        super.initListener();
         schoolName.setOnClickListener(this);
         photographNews.setOnClickListener(this);
         userNews.setOnClickListener(this);

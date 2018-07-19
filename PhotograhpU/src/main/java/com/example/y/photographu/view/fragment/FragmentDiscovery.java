@@ -1,4 +1,4 @@
-package com.example.y.photographu.fragment;
+package com.example.y.photographu.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

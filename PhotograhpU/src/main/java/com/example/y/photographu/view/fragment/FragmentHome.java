@@ -1,4 +1,4 @@
-package com.example.y.photographu.fragment;
+package com.example.y.photographu.view.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,9 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.y.photographu.activity.BaseActivity;
+import com.example.y.photographu.view.activity.BaseActivity;
 import com.example.y.photographu.R;
-import com.example.y.photographu.activity.TypeShowActivity;
+import com.example.y.photographu.view.activity.TypeShowActivity;
 import com.example.y.photographu.adapter.StyleAdapter;
 import com.example.y.photographu.adapter.HomeRollViewPagerAdapter;
 import com.example.y.photographu.beans.ResponseData;

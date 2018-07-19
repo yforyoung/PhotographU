@@ -1,4 +1,4 @@
-package com.example.y.photographu.activity;
+package com.example.y.photographu.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -74,7 +74,7 @@ public class TypeShowActivity extends BaseActivity {
                     public void onResponse(Response response) throws IOException {
                         String s = response.body().string();
                         Log.i(TAG, "handleResponses: " + s);
-                        /*这个东西是真的烦!*/
+
                         ResponseData responseData = new Gson()
                                 .fromJson(s, new TypeToken<ResponseData<PageBean>>() {
                                 }.getType());
