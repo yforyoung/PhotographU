@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,19 +35,37 @@
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:paddingStart="20dp"
-        android:text="学生证照片"
+        android:text="学生证正面照片"
         android:textColor="#000"
         tools:ignore="RtlSymmetry" />
+    <TextView
+        android:layout_below="@id/add_card_photo"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="（要求正面完整清晰，不大于700k）"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp" />
+
 
     <ImageView
         android:id="@+id/add_card_photo"
         android:layout_marginTop="56dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="220dp"
         android:layout_below="@id/card_number"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_add_a_photo" />
+        app:srcCompat="@drawable/ic_add_a_photo" />
 
-
+    <Button
+        android:id="@+id/apply_submit"
+        android:text="提    交"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="30dp"
+        android:textColor="#fff"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

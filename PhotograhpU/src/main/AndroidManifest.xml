@@ -3,9 +3,8 @@
     package="com.example.y.photographu">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".view.activity.PhotographApplication"
@@ -34,6 +33,7 @@
         <activity android:name=".view.activity.SchoolChooseActivity" />
         <activity android:name=".view.activity.SettingActivity" />
         <activity android:name=".view.activity.UserInfoSetActivity" />
+        <activity android:name=".view.activity.ApplyPhotographerActivity"></activity>
     </application>
 
 </manifest>

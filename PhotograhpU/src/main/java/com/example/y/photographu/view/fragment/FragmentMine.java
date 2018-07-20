@@ -31,6 +31,7 @@ import com.example.y.photographu.beans.ResponseData;
 import com.example.y.photographu.util.FileUtil;
 import com.example.y.photographu.util.HandleImageUtil;
 import com.example.y.photographu.util.OkHttpUtils;
+import com.example.y.photographu.view.activity.ApplyPhotographerActivity;
 import com.example.y.photographu.view.activity.BaseActivity;
 import com.example.y.photographu.view.activity.LoadActivity;
 import com.example.y.photographu.R;
@@ -177,6 +178,7 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
                 logout();
                 break;
             case R.id.my_apply:
+                jump2Activity(ApplyPhotographerActivity.class);
                 break;
             case R.id.my_collection:
                 break;

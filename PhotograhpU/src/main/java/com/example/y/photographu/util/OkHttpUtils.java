@@ -65,7 +65,7 @@ public class OkHttpUtils {
         MultipartBody.Builder builder = new MultipartBody.Builder();
         for (String s : params) {
             builder.addFormDataPart("file",
-                    s.substring(s.lastIndexOf("/")+1,s.length()),
+                    s,
                     RequestBody.create(MediaType.parse("image/*"),new File(s)));
         }
         RequestBody requestBody = builder
