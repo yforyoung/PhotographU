@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.UserInfoSetActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="72dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:text="学生证号"
+        android:textColor="#000"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/card_number"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="72dp"
+        android:background="@null"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/card_number"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:text="学生证照片"
+        android:textColor="#000"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/add_card_photo"
+        android:layout_marginTop="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_number"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_add_a_photo" />
+
+
+
+</RelativeLayout>

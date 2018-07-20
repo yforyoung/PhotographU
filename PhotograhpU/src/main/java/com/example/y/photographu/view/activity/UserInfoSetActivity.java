@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-
 import com.example.y.photographu.App;
+import com.example.y.photographu.Constant;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.ResponseData;
 import com.example.y.photographu.beans.User;
@@ -18,15 +18,14 @@ import com.example.y.photographu.util.FileUtil;
 import com.example.y.photographu.util.OkHttpUtils;
 import com.example.y.photographu.util.SpfUtil;
 import com.google.gson.Gson;
-
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import okhttp3.Response;
 
-import static android.support.constraint.Constraints.TAG;
 
 public class UserInfoSetActivity extends BaseActivity implements View.OnClickListener {
     private EditText nickname;
@@ -53,7 +52,7 @@ public class UserInfoSetActivity extends BaseActivity implements View.OnClickLis
         Toolbar toolbar = findViewById(R.id.toolbar_normal);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +120,7 @@ public class UserInfoSetActivity extends BaseActivity implements View.OnClickLis
                         params.put("sex", sex.getText().toString());
                         params.put("birthday", birthday.getText().toString());
                         OkHttpUtils.doPost("http://www.xhban.com:8080/photograph_u/user/updateInfo",
-                                params, "cookie", SpfUtil.getString("user_cookie", ""),
+                                params, "cookie", SpfUtil.getString(Constant.USER_COOKIE, ""),
                                 new OkHttpUtils.MyCallback() {
                                     @Override
                                     public void onResponse(Response response) throws IOException {
@@ -133,7 +132,7 @@ public class UserInfoSetActivity extends BaseActivity implements View.OnClickLis
                                             user.setNickname(nickname.getText().toString());
                                             App.getInstance().user = user;
                                             String m = new Gson().toJson(App.getInstance().user);
-                                            FileUtil.save("userData", m);
+                                            FileUtil.save(Constant.USER_DATA_FILE, m);
                                             showToast("修改成功");
                                         } else {
                                             showToast(responseData.getMessage());

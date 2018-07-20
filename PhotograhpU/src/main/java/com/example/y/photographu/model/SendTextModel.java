@@ -1,5 +1,6 @@
 package com.example.y.photographu.model;
 
+import com.example.y.photographu.Constant;
 import com.example.y.photographu.util.OkHttpUtils;
 import com.example.y.photographu.util.SpfUtil;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class SendTextModel implements ISendTextModel {
                     public void onResponse(Response response) throws IOException {
                         String cookie = response.header("Set-Cookie");
                         assert cookie != null;
-                        SpfUtil.putString("text_cookie",cookie.substring(0, cookie.indexOf(";")));
+                        SpfUtil.putString(Constant.TEXT_COOKIE,cookie.substring(0, cookie.indexOf(";")));
                         sendTextListener.sendText(response);
                     }
 

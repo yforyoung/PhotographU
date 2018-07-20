@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.y.photographu.App;
+import com.example.y.photographu.Constant;
 import com.example.y.photographu.view.activity.BaseActivity;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.ResponseData;
@@ -90,7 +91,7 @@ public class FragmentSchoolShow extends Fragment {
                 params.put("school",schoolList.get(position));
                 params.put("nickname", App.getInstance().user.getNickname());
                 OkHttpUtils.doPost("http://www.xhban.com:8080/photograph_u/user/updateInfo",
-                        params, "cookie", SpfUtil.getString("user_cookie", ""),
+                        params, "cookie", SpfUtil.getString(Constant.USER_COOKIE, ""),
                         new OkHttpUtils.MyCallback() {
                             @Override
                             public void onResponse(Response response) throws IOException {
@@ -101,7 +102,7 @@ public class FragmentSchoolShow extends Fragment {
                                     ((BaseActivity)getActivity()).showToast("修改成功");
                                     App.getInstance().user.setSchool(App.getInstance().school.getName());
                                     String m=new Gson().toJson(App.getInstance().user);
-                                    FileUtil.save("userData",m);
+                                    FileUtil.save(Constant.USER_DATA_FILE,m);
                                 }
                                 else{
                                     ((BaseActivity)getActivity()).showToast(responseData.getMessage());

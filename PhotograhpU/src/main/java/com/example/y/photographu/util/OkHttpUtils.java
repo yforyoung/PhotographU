@@ -1,11 +1,24 @@
 package com.example.y.photographu.util;
 
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.bumptech.glide.Glide;
+import com.example.y.photographu.App;
+import com.example.y.photographu.Constant;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -45,19 +58,28 @@ public class OkHttpUtils {
     }
 
     public static void postFiles(String url, List<String> params, final MyCallback callback) {
+        getInstance().inner_postFile(url,params,callback);
+    }
+
+    private void inner_postFile(String url, List<String> params, final MyCallback callback){
         MultipartBody.Builder builder = new MultipartBody.Builder();
         for (String s : params) {
-            builder.addFormDataPart("file", s, RequestBody.create(MediaType.parse("image/*"), new File(s)));
+            builder.addFormDataPart("file",
+                    s.substring(s.lastIndexOf("/")+1,s.length()),
+                    RequestBody.create(MediaType.parse("image/*"),new File(s)));
         }
         RequestBody requestBody = builder
+                .setType(MultipartBody.FORM)
                 .build();
-        client.newCall(new Request.Builder()
-                .addHeader("cookie", SpfUtil.getString("user_cookie", ""))
+        Request request = new Request.Builder()
+                .addHeader("cookie", SpfUtil.getString(Constant.USER_COOKIE, ""))
                 .post(requestBody)
                 .url(url)
-                .build()).enqueue(new Callback() {
+                .build();
+        client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                callback.onFailure(e);
             }
 
             @Override
@@ -66,6 +88,22 @@ public class OkHttpUtils {
             }
         });
     }
+   /* private File writeByte2File(byte[] bytes) {
+        FileOutputStream out = null;
+        try {
+            out =App.getInstance().getContext().openFileOutput("aaa", Context.MODE_PRIVATE);
+            InputStream is = new ByteArrayInputStream(bytes);
+            byte[] buff = new byte[1024];
+            int len = 0;
+            while ((len = is.read(buff)) != -1) {
+                out.write(buff, 0, len);
+            }
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new File(App.getInstance().getContext().getFilesDir().getPath(),"aaa");
+    }*/
 
 
     /*内部方法 网络请求

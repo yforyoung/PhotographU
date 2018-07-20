@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.y.photographu.App;
+import com.example.y.photographu.Constant;
 import com.example.y.photographu.R;
 import com.example.y.photographu.beans.User;
 import com.example.y.photographu.view.fragment.FragmentAppointment;
@@ -62,8 +63,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         initView("");
         initListener();
 
-        App.getInstance().cookie= SpfUtil.getString("user_cookie","");
-        App.getInstance().user=new Gson().fromJson(FileUtil.read("userData"),User.class);
+        App.getInstance().cookie= SpfUtil.getString(Constant.USER_COOKIE,"");
+        App.getInstance().user=new Gson().fromJson(FileUtil.read(Constant.USER_DATA_FILE),User.class);
+        User user=App.getInstance().user;
 
         manager = getSupportFragmentManager();      //初始化管理者
         fragmentHome = new FragmentHome();      //第一页Fragment

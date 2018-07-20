@@ -3,6 +3,7 @@ package com.example.y.photographu.model;
 
 import android.util.Log;
 
+import com.example.y.photographu.Constant;
 import com.example.y.photographu.util.MD5Util;
 import com.example.y.photographu.util.OkHttpUtils;
 import com.example.y.photographu.util.SpfUtil;
@@ -46,7 +47,7 @@ public class UserModel implements IUserModel {
         param.put("message_code", code);
         String url = "http://www.xhban.com:8080/photograph_u/user/register";
         OkHttpUtils.doPost(url, param, "cookie",
-                SpfUtil.getString("text_cookie", ""),
+                SpfUtil.getString(Constant.TEXT_COOKIE, ""),
                 new OkHttpUtils.MyCallback() {
                     @Override
                     public void onResponse(Response response) throws IOException {
@@ -68,7 +69,7 @@ public class UserModel implements IUserModel {
         OkHttpUtils.doPost("http://www.xhban.com:8080/photograph_u/user/resetPassword",
                 param,
                 "cookie",
-                SpfUtil.getString("text_cookie", ""),
+                SpfUtil.getString(Constant.TEXT_COOKIE, ""),
                 new OkHttpUtils.MyCallback() {
                     @Override
                     public void onResponse(Response response) throws IOException {

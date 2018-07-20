@@ -1,17 +1,8 @@
 package com.example.y.photographu.model;
 
-import android.util.Log;
 
-import com.example.y.photographu.beans.ResponseData;
-import com.example.y.photographu.beans.Style;
 import com.example.y.photographu.util.OkHttpUtils;
-import com.example.y.photographu.view.activity.BaseActivity;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
-import java.util.List;
-
 import okhttp3.Response;
 
 

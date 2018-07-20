@@ -3,8 +3,14 @@ package com.example.y.photographu.view.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +24,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.example.y.photographu.Constant;
 import com.example.y.photographu.beans.ResponseData;
 import com.example.y.photographu.util.FileUtil;
 import com.example.y.photographu.util.HandleImageUtil;
@@ -34,6 +43,7 @@ import com.example.y.photographu.view.activity.UserInfoSetActivity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Response;
@@ -78,15 +88,26 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
 
     }
 
+
     private void initUserInfo() {
         if (App.getInstance().user != null) {
             User user = App.getInstance().user;
             nickname.setText(user.getNickname());
+            SimpleTarget<Drawable> simpleTarget = new SimpleTarget<Drawable>() {
+                @Override
+                public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                    Bitmap bitmap=((BitmapDrawable)resource).getBitmap();
+                    bitmap=Bitmap.createScaledBitmap(bitmap,76,76,false);
+                    headPic.setImageBitmap(bitmap);
+                }
+            };
+
+            Log.i(TAG, "initUserInfo: "+user.getHeadImage());
             Glide.with(this)
                     .load("http://www.xhban.com:8080/photograph_u/head_images/"
                             + user.getHeadImage())
-                    .into(headPic);
-            Log.i(TAG, "initUserInfo: ");
+                    .into(simpleTarget);
+
         }
     }
 
@@ -128,23 +149,23 @@ public class FragmentMine extends Fragment implements View.OnClickListener {
                                 @Override
                                 public void onResponse(Response response) throws IOException {
                                     String s = response.body().string();
+                                    Log.i(TAG, "onResponse: " + s);
                                     ResponseData responseData = App.getGson().fromJson(s, ResponseData.class);
                                     if (responseData.getCode() == 0) {
                                         ((BaseActivity) getActivity()).showToast("修改成功");
                                         App.getInstance().user.setHeadImage(imgPath);
-                                        String m=App.getGson().toJson(App.getInstance().user);
-                                        FileUtil.save("userData",m);
+                                        String m = App.getGson().toJson(App.getInstance().user);
+                                        FileUtil.save(Constant.USER_DATA_FILE, m);
                                     } else
                                         ((BaseActivity) getActivity()).showToast(responseData.getMessage());
                                 }
 
                                 @Override
                                 public void onFailure(IOException e) {
-
+                                    Log.i(TAG, "onFailure: " + e);
                                 }
                             });
                 }
-
                 break;
         }
     }
